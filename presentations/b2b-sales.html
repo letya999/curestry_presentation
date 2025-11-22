@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curestry B2B Sales Presentation — Решение для компаний</title>
+    <meta name="description" content="Curestry B2B Sales: проблемы, решение, примеры внедрения, ROI расчёты, пилот условия. Для продаж и внедрения в компании.">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <style>
+        :root {
+            --bg-dark: #0a0e1a;
+            --card-bg: rgba(10, 14, 26, 0.95);
+            --accent-cyan: #00d9ff;
+            --accent-green: #00ff88;
+            --accent-pink: #ff0080;
+            --accent-purple: #b0c0ff;
+            --text-main: #ffffff;
+            --text-muted: #dddddd;
+            --border-glow: rgba(0, 217, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background: #05070d;
+            color: var(--text-main);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        /* PDF/Slide Container Style */
+        .presentation-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .slide {
+            background: radial-gradient(ellipse at bottom right, rgba(0, 100, 100, 0.15) 0%, var(--card-bg) 60%, var(--bg-dark) 100%);
+            border: 1px solid var(--border-glow);
+            border-radius: 16px;
+            padding: 50px;
+            min-height: 680px; /* Aspect Ratio preservation on desktop */
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Top decorative line */
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-cyan) 0%, var(--accent-green) 50%, var(--accent-pink) 100%);
+        }
+
+        /* Typography */
+        h1 {
+            font-size: clamp(32px, 5vw, 72px);
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, #b0c0ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: clamp(24px, 4vw, 48px);
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .subtitle {
+            font-size: clamp(18px, 2vw, 24px);
+            color: var(--accent-purple);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .text-body {
+            font-size: 16px;
+            color: var(--text-muted);
+        }
+
+        .highlight-green { color: var(--accent-green); font-weight: bold; }
+
+        /* Layout Utilities */
+        .content-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            height: 100%;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .grid-6 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        /* Components */
+        .card {
+            background: rgba(0, 217, 255, 0.05);
+            border: 1px solid rgba(0, 217, 255, 0.15);
+            border-radius: 12px;
+            padding: 25px;
+            transition: transform 0.2s;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--accent-cyan);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pain-point {
+            background: rgba(255, 0, 128, 0.05);
+            border-left: 3px solid var(--accent-pink);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .metric-box {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+        }
+        .metric-val { font-size: 32px; font-weight: 800; color: var(--accent-green); display: block; margin-bottom: 5px;}
+        .metric-lbl { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #888; }
+
+        /* Tables */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .comparison-table th {
+            color: var(--accent-purple);
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        .comparison-table tr:last-child td { border-bottom: none; }
+        .benefit-cell {
+            color: var(--accent-green);
+            font-weight: bold;
+            background: rgba(0, 255, 136, 0.05);
+        }
+
+        /* Mockups for Slides */
+        .mockup-container-large {
+            background: #151a25;
+            border-radius: 12px;
+            height: 350px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #333;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .mockup-container-large img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Contact */
+        .contact-btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 30px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green));
+            color: #000;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 18px;
+            transition: transform 0.2s;
+        }
+        .contact-btn:hover { transform: scale(1.05); }
+
+        .slide-number {
+            position: absolute;
+            bottom: 20px;
+            right: 35px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Code BG Effect */
+        .code-bg {
+            position: absolute; top:0; left:0; right:0; bottom:0;
+            opacity: 0.03;
+            font-family: 'Courier New', monospace;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+            white-space: pre-wrap;
+        }
+
+        /* MOBILE RESPONSIVENESS */
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .slide {
+                padding: 25px;
+                min-height: auto; /* Content defines height */
+                height: auto;
+                gap: 20px;
+            }
+            
+            .grid-2, .grid-3, .grid-6 {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            h1 { margin-top: 10px; }
+            
+            .mockup-container-large { height: 200px; }
+
+            .comparison-table { font-size: 14px; }
+            .comparison-table th, .comparison-table td { padding: 10px 5px; }
+        }
+        
+        @media print {
+            .slide { page-break-after: always; margin: 0; border: none; }
+            body { background: white; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="presentation-container">
+
+    <div class="slide">
+        <div class="code-bg">
+import curestry
+agent.optimize(mode="auto")
+>>> Optimization complete.
+>>> Savings: 23%
+        </div>
+        <div class="content-wrapper" style="justify-content: center; text-align: center;">
+            <div style="margin-bottom: 20px; color: var(--accent-cyan); font-weight: 700; text-transform: uppercase; letter-spacing: 2px;"></div>
+            <h1>Curestry</h1>
+            <p class="subtitle" style="font-size: 28px; color: #fff; margin-top: 20px;">Отладьте агентов за часы вместо дней.<br>Сэкономьте <span class="highlight-green">20%</span> на токенах уже в первый месяц.</p>
+            
+            <div style="margin-top: 40px; padding: 20px; border: 1px solid var(--accent-green); border-radius: 12px; display: inline-block; background: rgba(0, 255, 136, 0.05);">
+                <p style="color: var(--text-muted); margin-bottom: 5px;"></p>
+                <strong style="font-size: 20px; color: var(--accent-green);">Prompt & Behavior Optimizer + Observability</strong>
+            </div>
+        </div>
+        <div class="slide-number">1</div>
+    </div>
+
+    <div class="slide">
+        <h2>Почему агенты в production — это больно</h2>
+        <div class="content-wrapper">
+            <p class="text-body" style="margin-bottom: 30px; font-size: 18px;">
+                Компании теряют деньги не на создании агентов, а на их нестабильности и слепой отладке.
+            </p>
+            
+            <div class="grid-2">
+                <div>
+                    <div class="pain-point">
+                        <h3 style="color: var(--accent-pink);">⏱️ Долгая отладка (MTTR)</h3>
+                        <p style="color: #ddd;">Инженеры тратят <strong>4–8 часов</strong> на поиск одной ошибки. Логи разбросаны, контекст теряется.</p>
+                    </div>
+                    <div class="pain-point">
+                        <h3 style="color: var(--accent-pink);">💸 Невидимые потери</h3>
+                        <p style="color: #ddd;">Перерасход токенов на 15–30% из-за неоптимизированных промптов и циклов.</p>
+                    </div>
+                    <div class="pain-point">
+                        <h3 style="color: var(--accent-pink);">📉 Падение качества</h3>
+                        <p style="color: #ddd;">Агенты деградируют. Accuracy падает с 95% до 85% за пару месяцев без присмотра.</p>
+                    </div>
+                </div>
+                
+                <div style="display: flex; flex-direction: column; gap: 20px; justify-content: center;">
+                    <div class="metric-box">
+                        <span class="metric-val" style="color: var(--accent-pink);">~$60K</span>
+                        <span class="metric-lbl">Потерь в месяц (Enterprise)</span>
+                    </div>
+                    <div class="metric-box">
+                        <span class="metric-val" style="color: var(--accent-pink);">40%</span>
+                        <span class="metric-lbl">Времени инженеров уходит на дебаг</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">2</div>
+    </div>
+
+    <div class="slide">
+        <h2>Команда и Экспертиза</h2>
+        <div class="content-wrapper">
+            <div class="grid-2">
+                <div>
+                    <p class="subtitle">Наш бэкграунд</p>
+                    <ul style="list-style: none; color: var(--text-muted); font-size: 18px; line-height: 2;">
+                        <li>👨‍💻 <strong>Ex-Yandex, MTS, Sber:</strong> Ядро команды выходцы из Big Tech с 5+ лет опыта в ML/Backend.</li>
+                        <li>🚀 <strong>JetBrains & Kcell:</strong> Опыт работы в международных продуктовых компаниях и телекоме.</li>
+                    </ul>
+                    
+                    <div style="margin-top: 30px; padding: 20px; border: 1px solid var(--accent-purple); border-radius: 12px; background: rgba(176, 192, 255, 0.05);">
+                         <strong style="color: var(--accent-purple); font-size: 20px;">Мы понимаем боль рынка</strong>
+                         <p style="color: #ddd; margin-top: 10px;">Провели <strong>100+ интервью</strong> с <strong>50+ AI-компаниями</strong>, чтобы создать продукт, решающий реальные проблемы.</p>
+                    </div>
+                </div>
+                <div>
+                    <p class="subtitle">Релевантный опыт проектов</p>
+                     <div class="card" style="margin-bottom: 20px;">
+                        <div class="card-title">🏛️ Госсектор РК</div>
+                        <p style="color: #ddd;">Проекты для <strong>Министерства просвещения</strong> и <strong>Таможенной службы</strong> (ML анализ рисков, OCR).</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-title">🎓 Продуктовые компании</div>
+                        <p style="color: #ddd;">Разработка RAG-cистем для<strong>Яндекс Образования</strong> и топ 2 СНГ сервиса знакомств Twinby.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">3</div>
+    </div>
+
+    <div class="slide">
+        <h2>Масштаб пилота</h2>
+        <div class="content-wrapper">
+            <p class="text-body" style="margin-bottom: 25px;">Мы начинаем с самого важного — прозрачности и оптимизации.</p>
+            
+            <div class="grid-2" style="align-items: start;">
+                <div style="opacity: 0.6; border-right: 1px dashed rgba(255,255,255,0.2); padding-right: 20px; height: 100%;">
+                    <h3 style="color: var(--text-muted); margin-bottom: 20px; height: 40px; display: flex; align-items: center;">Full Vision (2026+)</h3>
+                    <ul style="list-style: none; line-height: 2.2; color: #888; font-size: 18px;">
+                        <li>1. Observability Layer</li>
+                        <li>2. Data Room</li>
+                        <li>3. RCA (Root Cause Analysis)</li>
+                        <li>4. AutoFix Engine</li>
+                        <li>5. Automated Testing</li>
+                        <li>6. Multi-Agent Orchestration</li>
+                    </ul>
+                </div>
+
+                <div style="height: 100%;">
+                    <h3 style="color: var(--accent-cyan); margin-bottom: 20px; height: 40px; display: flex; align-items: center;">🎯 Этот пилот (v1.0)</h3>
+                    <div class="card" style="border: 1px solid var(--accent-green); background: rgba(0, 255, 136, 0.03); height: calc(100% - 60px);">
+                        <ul style="list-style: none; line-height: 2.2; font-size: 18px; height: 100%; display: flex; flex-direction: column; justify-content: center;">
+                            <li>✅ <strong>Observability:</strong> Полная телеметрия</li>
+                            <li>✅ <strong>Prompt Optimizer:</strong> Анализ 20+ метрик</li>
+                            <li>✅ <strong>RCA (MVP):</strong> Поиск причин сбоев</li>
+                            <li>✅ <strong>A/B Testing:</strong> Сравнение версий</li>
+                            <li>✅ <strong>Cost Tracking:</strong> Контроль бюджета</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">4</div>
+    </div>
+
+    <div class="slide">
+        <h2>Что входит в пилот (6 модулей)</h2>
+        <div class="content-wrapper" style="margin-top: 20px;">
+            <div class="grid-6" style="grid-template-columns: 1fr 1fr 1fr;">
+                <div class="card">
+                    <div class="card-title">🔍 Monitoring</div>
+                    <p style="font-size: 14px; color: #bbb;">Полный лог: промпты, ответы, ошибки, латентность. Видим всё, что происходит внутри LangGraph/CrewAI.</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">📊 20+ Metrics</div>
+                    <p style="font-size: 14px; color: #bbb;">Автоматический анализ качества промптов: семантика, ясность, структура, безопасность.</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">🤖 Auto-Fix</div>
+                    <p style="font-size: 14px; color: #bbb;">AI предлагает улучшенные версии промптов, исправляя найденные слабости.</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">⚖️ A/B Testing</div>
+                    <p style="font-size: 14px; color: #bbb;">Запускаем старый и новый промпт параллельно на ваших данных. Выбираем победителя по цифрам.</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">🗣️ Interactive</div>
+                    <p style="font-size: 14px; color: #bbb;">Система задает уточняющие вопросы инженеру, чтобы лучше понять контекст задачи.</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">📈 Reporting</div>
+                    <p style="font-size: 14px; color: #bbb;">Дашборд в реальном времени + итоговый PDF отчет с рекомендациями.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">5</div>
+    </div>
+
+    <div class="slide">
+        <h2>1. Мониторинг и Observability</h2>
+        <p class="subtitle">Полный контроль над хаосом в реальном времени</p>
+        
+        <div class="content-wrapper">
+            <div class="mockup-container-large">
+                <img src="https://placehold.co/1200x800/151a25/00d9ff?text=Real-time+Dashboard+Interface" alt="Dashboard Preview">
+            </div>
+            
+            <div class="grid-3">
+                <div>
+                    <strong style="color: var(--accent-cyan);">Real-time метрики</strong>
+                    <p style="font-size: 14px; color: #999; margin-top: 5px;">Отслеживайте стоимость запуска, success rate, и латентность каждого агента.</p>
+                </div>
+                <div>
+                    <strong style="color: var(--accent-cyan);">Трассировка запросов</strong>
+                    <p style="font-size: 14px; color: #999; margin-top: 5px;">Детальные логи выполнения через все узлы LangGraph или CrewAI.</p>
+                </div>
+                <div>
+                    <strong style="color: var(--accent-cyan);">Подсветка проблем</strong>
+                    <p style="font-size: 14px; color: #999; margin-top: 5px;">Мгновенное обнаружение аномалий и дорогих запросов.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">6</div>
+    </div>
+
+    <div class="slide">
+        <h2>2. Диагностика (RCA) и Анализ</h2>
+        <p class="subtitle" style="color: var(--accent-green);">Автоматический поиск корневых причин сбоев</p>
+        
+        <div class="content-wrapper">
+            <div class="mockup-container-large" style="border-color: rgba(0, 255, 136, 0.3);">
+                <img src="https://placehold.co/1200x800/151a25/00ff88?text=Root+Cause+Analysis+Interface" alt="Analysis Preview">
+            </div>
+            
+            <div class="grid-3">
+                <div>
+                    <strong style="color: var(--accent-green);">Анализ 20+ метрик</strong>
+                    <p style="font-size: 14px; color: #999; margin-top: 5px;">Проверка промптов на семантическую ясность, безопасность и структуру.</p>
+                </div>
+                <div>
+                    <strong style="color: var(--accent-green);">Выявление слабых мест</strong>
+                    <p style="font-size: 14px; color: #999; margin-top: 5px;">Система точно указывает, какая часть промпта или логики вызывает сбой.</p>
+                </div>
+                <div>
+                    <strong style="color: var(--accent-green);">Auto-Fix предложения</strong>
+                    <p style="font-size: 14px; color: #999; margin-top: 5px;">Генерация исправленных версий промптов в один клик.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">7</div>
+    </div>
+
+    <div class="slide">
+        <h2>3. A/B Тестирование и Оптимизация</h2>
+        <p class="subtitle" style="color: var(--accent-pink);">Безопасное внедрение улучшений на реальных данных</p>
+        
+        <div class="content-wrapper">
+            <div class="mockup-container-large" style="border-color: rgba(255, 0, 128, 0.3);">
+                <img src="https://placehold.co/1200x800/151a25/ff0080?text=A/B+Testing+Results+Interface" alt="AB Test Preview">
+            </div>
+            
+            <div class="grid-3">
+                <div>
+                    <strong style="color: var(--accent-pink);">Сравнение версий</strong>
+                    <p style="font-size: 14px; color: #999; margin-top: 5px;">Запуск текущего и оптимизированного агента параллельно.</p>
+                </div>
+                <div>
+                    <strong style="color: var(--accent-pink);">Валидация на данных</strong>
+                    <p style="font-size: 14px; color: #999; margin-top: 5px;">Тестирование на вашем реальном историческом трафике.</p>
+                </div>
+                <div>
+                    <strong style="color: var(--accent-pink);">Доказанный результат</strong>
+                    <p style="font-size: 14px; color: #999; margin-top: 5px;">Наглядные метрики: "Версия B дешевле на 15% и точнее на 5%".</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">8</div>
+    </div>
+
+    <div class="slide">
+        <h2>Ожидаемые результаты (30 дней)</h2>
+        <div class="content-wrapper" style="justify-content: center;">
+            <p class="text-body" style="margin-bottom: 30px;">Мы не просто даем инструмент, мы меняем экономику ваших агентов.</p>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th width="30%">Метрика</th>
+                        <th width="25%">Сейчас</th>
+                        <th width="25%">С Curestry</th>
+                        <th width="20%">Выгода</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Скорость отладки</strong></td>
+                        <td>4-8 часов / баг</td>
+                        <td>20-30 минут</td>
+                        <td class="benefit-cell">80% быстрее</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Расходы на LLM</strong></td>
+                        <td>Высокие (лишние токены)</td>
+                        <td>Оптимизированные</td>
+                        <td class="benefit-cell">-15-20% Cost</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Прозрачность</strong></td>
+                        <td>Black Box</td>
+                        <td>Full Visibility</td>
+                        <td class="benefit-cell">Полный контроль</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Уверенность инженеров</strong></td>
+                        <td>Низкая (страх релиза)</td>
+                        <td>Высокая (есть тесты)</td>
+                        <td class="benefit-cell">Быстрый Time-to-Market</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="slide-number">9</div>
+    </div>
+
+    <div class="slide">
+        <h2>Формат внедрения</h2>
+        <div class="content-wrapper">
+            <p class="text-body" style="margin-bottom: 30px;">Гибкость для стартапов и безопасность для банков.</p>
+
+            <div class="grid-3">
+                <div class="card" style="border-top: 3px solid var(--accent-cyan);">
+                    <div class="card-title" style="font-size: 22px;">☁️ SaaS Cloud</div>
+                    <p style="margin: 15px 0; font-weight: bold;">Быстрый старт</p>
+                    <ul style="list-style: none; color: #bbb; font-size: 14px; line-height: 1.8;">
+                        <li>• Готовность: Немедленно</li>
+                        <li>• Идеально для: Стартапов</li>
+                        <li>• Hosting: Secure Cloud</li>
+                    </ul>
+                </div>
+
+                <div class="card" style="border-top: 3px solid var(--accent-green); background: rgba(0, 255, 136, 0.05);">
+                    <div class="card-title" style="font-size: 22px;">🏢 On-Premise</div>
+                    <p style="margin: 15px 0; font-weight: bold;">Полная приватность</p>
+                    <ul style="list-style: none; color: #bbb; font-size: 14px; line-height: 1.8;">
+                        <li>• Готовность: По запросу</li>
+                        <li>• Идеально для: Финтех/Банки</li>
+                        <li>• Data: Данные не покидают контур</li>
+                        <li>• Zero External APIs</li>
+                    </ul>
+                </div>
+
+                <div class="card" style="border-top: 3px solid var(--accent-purple);">
+                    <div class="card-title" style="font-size: 22px;">🔌 Интеграции</div>
+                    <p style="margin: 15px 0; font-weight: bold;">SDK & API</p>
+                    <ul style="list-style: none; color: #bbb; font-size: 14px; line-height: 1.8;">
+                        <li>• Python SDK (3 строки кода)</li>
+                        <li>• LangGraph, CrewAI, AutoGen</li>
+                        <li>• Любые модели (OpenAI, Llama)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">10</div>
+    </div>
+
+    <div class="slide">
+        <h2>Условия и выгоды пилота</h2>
+        <div class="content-wrapper">
+            <div class="grid-2">
+                <div>
+                    <p class="subtitle">Параметры</p>
+                    <div class="card">
+                        <ul style="list-style: none; line-height: 2.5; font-size: 18px;">
+                            <li>📅 <strong>Срок:</strong> 30 дней (фиксировано)</li>
+                            <li>📝 <strong>Договор:</strong> Соглашение о сотрудничестве и ком.тайне (LoI и NDA)</li>
+                            <li>💳 <strong>Оплата:</strong> Постоплата или аванс (со скидкой)</li>
+                            <li>🤝 <strong>Поддержка:</strong> Ежедневный мониторинг</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div>
+                    <p class="subtitle" style="color: var(--accent-green);">Почему сейчас?</p>
+                    <div class="card" style="background: linear-gradient(145deg, rgba(0,255,136,0.05) 0%, rgba(0,0,0,0) 100%);">
+                        <ul style="list-style: none; line-height: 1.8; font-size: 16px;">
+                            <li style="margin-bottom: 15px;">
+                                <strong style="color: var(--accent-green);">✅ 30% скидка на 2 года</strong><br>
+                                Закрепляем за вами скидку от рычной цены.
+                            </li>
+                            <li style="margin-bottom: 15px;">
+                                <strong style="color: var(--accent-cyan);">✅ Приоритетная поддержка</strong><br>
+                                Выделенная линия, прямой контакт с CTO, SLA.
+                            </li>
+                            <li style="margin-bottom: 15px;">
+                                <strong style="color: var(--accent-purple);">✅ Влияние на Roadmap</strong><br>
+                                Ваши фичи реализуются первыми.
+                            </li>
+                            <li>
+                                <strong style="color: var(--accent-pink);">✅ PR & Партнерство</strong><br>
+                                Joint Case Study, доступ к экосистеме партнеров.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">11</div>
+    </div>
+
+    <div class="slide" style="align-items: center; justify-content: center; text-align: center;">
+        <div class="content-wrapper" style="justify-content: center; align-items: center; flex: none;">
+            <h1 style="font-size: 58px; margin-bottom: 20px; max-width: 900px; line-height: 1.2;">Готовы сделать ваших AI-агентов стабильными и выгодными?</h1>
+            <p class="subtitle" style="font-size: 28px; color: var(--accent-cyan); margin-bottom: 40px;">
+                Давайте начнем пилот.
+            </p>
+
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 50px;">
+                <a href="mailto:team@curestry.com" class="contact-btn">📧 team@curestry.com</a>
+                <a href="tel:+77027776298" class="contact-btn" style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2);">📱 +7 (702) 777-62-98</a>
+                <a href="https://t.me/lauranovat" class="contact-btn" style="background: #0088cc; color: white;">💬 @lauranovat (Telegram)</a>
+            </div>
+
+            <p style="color: #666; font-size: 14px;">
+                Curestry • Almaty • November 2025
+            </p>
+        </div>
+        <div class="slide-number">12</div>
+    </div>
+
+</div>
+
+<div class="presentation-nav">
+    <a href="../index.html" style="padding: 10px 20px; background: rgba(0, 217, 255, 0.1); color: var(--accent-cyan); text-decoration: none; border-radius: 6px; font-weight: 600; border: 1px solid var(--accent-cyan);">← Назад</a>
+    <span class="slide-counter" id="slide-counter">1 / 12</span>
+    <button id="prev-slide" style="padding: 10px 20px; background: var(--accent-cyan); color: #000; border: none; border-radius: 6px; font-weight: 600; cursor: pointer;">←</button>
+    <button id="next-slide" style="padding: 10px 20px; background: var(--accent-cyan); color: #000; border: none; border-radius: 6px; font-weight: 600; cursor: pointer;">→</button>
+    <a href="../assets/pdf/curestry-b2b-sales.pdf" download style="padding: 10px 20px; background: rgba(0, 255, 136, 0.1); color: var(--accent-green); text-decoration: none; border-radius: 6px; font-weight: 600; border: 1px solid var(--accent-green);">📥 PDF</a>
+</div>
+
+<script src="../assets/js/main.js"></script>
+<script>
+    // Simple script to allow printing or saving as PDF nicely
+    // Pressing 'P' key triggers print dialog
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'p' || event.key === 'P') {
+            window.print();
+        }
+    });
+</script>
+
+</body>
+</html>

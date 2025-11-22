@@ -1,0 +1,101 @@
+# Curestry - AgentOps Platform
+# Last Updated: January 15, 2025
+
+## About
+
+Curestry is an on-premise AgentOps platform for debugging, monitoring, and optimizing AI agent systems in production.
+
+Combines observability, Root Cause Analysis (RCA), and automatic optimization in a single solution.
+
+## Core Features
+
+- Real-time observability and telemetry collection from LLM frameworks (LangChain, CrewAI, AutoGen)
+
+- Root Cause Analysis (RCA) - finds why AI agents fail
+
+- AutoFix - automatically generates and tests improved prompts
+
+- A/B testing on real production data
+
+- On-premise deployment with zero external APIs
+
+- Local models support (vLLM)
+
+- Git integration
+
+- Slack/PagerDuty/Jira alerts
+
+## Key Problems Solved
+
+1. Mean Time to Resolution (MTTR) - from 4-8 hours to ~1 hour
+
+2. LLM token cost reduction - 15-20% savings per month
+
+3. Production errors - 70% reduction
+
+4. AI agent debugging - 2x faster
+
+## Pricing Tiers
+
+- Freemium: $0 (10K traces/month, cloud)
+
+- Growth: $99/month (50K traces/month, cloud)
+
+- Pro: $299/month (500K traces/month, cloud)
+
+- Enterprise Cloud: $999+/month (on-demand)
+
+- Enterprise On-Prem: $2-5K/month (self-hosted)
+
+## Target Customers
+
+- AI-native startups (moon.ai, SHAI PRO, Call2Action.ai)
+
+- Financial services and banks
+
+- Call centers and BPO companies
+
+- AI consulting firms
+
+## Technology Stack
+
+- Backend: Python 3.11, FastAPI, PostgreSQL, Kafka, Langraph
+
+- Frontend: Next.js 14, TailwindCSS, Shadcn/ui
+
+- Inference: vLLM (local) + OpenAI API fallback
+
+- Deployment: Docker, Kubernetes, AWS (or any cloud)
+
+## Contact
+
+Email: contact@curestry.com
+
+Website: https://curestry.com
+
+Product Presentation: https://curestry.com/presentations/product.html
+
+B2B Sales: https://curestry.com/presentations/b2b-sales.html
+
+Investor Pitch: https://curestry.com/presentations/investor-pitch.html
+
+## Resources
+
+- Product PDF: https://curestry.com/assets/pdf/curestry-product.pdf
+
+- Sales PDF: https://curestry.com/assets/pdf/curestry-b2b-sales.pdf
+
+- Investor PDF: https://curestry.com/assets/pdf/curestry-investor-pitch.pdf
+
+## Company Info
+
+Founded: 2024
+
+Status: MVP ready (November 2025)
+
+Beta Partners: Botable, Convinco, Diffuzio
+
+Team: CEO (Design/Marketing), CTO (LLM Engineer), COO (Product/Dev), Backend Engineers
+
+Experience: 10+ years with government clients (Kazakhstan), Yandex, Twinby
+

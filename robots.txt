@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Allow: /presentations/
+Allow: /assets/pdf/
+Disallow: /admin/
+Disallow: /.git
+Crawl-delay: 0
+Sitemap: https://curestry.com/sitemap.xml
+
