@@ -43,7 +43,7 @@
             font-family: 'Inter', sans-serif;
         }
         
-        /* Faster flow animation */
+        /* Data flow animation - dashed lines moving */
         @keyframes flow {
             0% {
                 stroke-dashoffset: 0;
@@ -56,50 +56,91 @@
         /* Glowing pulse effect for active nodes */
         @keyframes node-pulse {
             0%, 100% {
-                opacity: 0.6;
-                filter: drop-shadow(0 0 4px rgba(34, 211, 238, 0.3));
+                opacity: 0.4;
+                filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.4));
             }
             50% {
                 opacity: 1;
-                filter: drop-shadow(0 0 12px rgba(34, 211, 238, 0.8)) drop-shadow(0 0 20px rgba(34, 211, 238, 0.4));
+                filter: drop-shadow(0 0 16px rgba(34, 211, 238, 0.9)) drop-shadow(0 0 24px rgba(34, 211, 238, 0.6));
+            }
+        }
+        
+        /* Label fade in/out animation */
+        @keyframes label-fade {
+            0%, 100% {
+                opacity: 0;
+                transform: translateY(4px);
+            }
+            20%, 80% {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
         
         .flow-line {
-            stroke-dasharray: 4 4;
-            animation: flow 0.8s linear infinite;
+            stroke-dasharray: 6 6;
+            animation: flow 0.6s linear infinite;
         }
         
         .flow-line-delay-1 {
-            animation-delay: 0.15s;
+            animation-delay: 0.2s;
         }
         
         .flow-line-delay-2 {
-            animation-delay: 0.3s;
+            animation-delay: 0.4s;
         }
         
         .flow-line-delay-3 {
-            animation-delay: 0.45s;
-        }
-        
-        .node-pulse {
-            animation: node-pulse 1.5s ease-in-out infinite;
-        }
-        
-        .node-pulse-delay-1 {
-            animation-delay: 0.3s;
-        }
-        
-        .node-pulse-delay-2 {
             animation-delay: 0.6s;
         }
         
+        .flow-line-delay-4 {
+            animation-delay: 0.8s;
+        }
+        
+        .flow-line-delay-5 {
+            animation-delay: 1.0s;
+        }
+        
+        .node-pulse {
+            animation: node-pulse 2s ease-in-out infinite;
+        }
+        
+        .node-pulse-delay-1 {
+            animation-delay: 0.4s;
+        }
+        
+        .node-pulse-delay-2 {
+            animation-delay: 0.8s;
+        }
+        
         .node-pulse-delay-3 {
-            animation-delay: 0.9s;
+            animation-delay: 1.2s;
         }
         
         .node-pulse-delay-4 {
-            animation-delay: 1.2s;
+            animation-delay: 1.6s;
+        }
+        
+        .node-pulse-delay-5 {
+            animation-delay: 2.0s;
+        }
+        
+        .node-pulse-delay-6 {
+            animation-delay: 2.4s;
+        }
+        
+        .node-pulse-delay-7 {
+            animation-delay: 2.8s;
+        }
+        
+        .label-animation {
+            animation: label-fade 4s ease-in-out infinite;
+        }
+        
+        .label-animation-delay {
+            animation: label-fade 4s ease-in-out infinite;
+            animation-delay: 2s;
         }
         
         /* Text shadows for readability */
@@ -118,69 +159,118 @@
         <!-- СЕКЦИЯ 1: HERO (Широкая, с анимированным графом) -->
         <section class="relative overflow-hidden min-h-[80vh] flex items-center justify-center">
             <!-- Фоновая SVG-графика: Banking Support Agent (LangGraph) -->
-            <svg class="absolute inset-0 z-0 w-full h-full opacity-30 md:opacity-25" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+            <svg class="absolute inset-0 z-0 w-full h-full opacity-25" viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
                 <defs>
-                    <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-                        <polygon points="0 0, 8 4, 0 8" fill="rgb(34, 211, 238)" opacity="0.7" />
+                    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+                        <polygon points="0 0, 10 5, 0 10" fill="rgb(34, 211, 238)" opacity="0.8" />
                     </marker>
                     <filter id="glow">
-                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                        <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
                         <feMerge>
                             <feMergeNode in="coloredBlur"/>
                             <feMergeNode in="SourceGraphic"/>
                         </feMerge>
                     </filter>
+                    <linearGradient id="nodeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:rgba(34, 211, 238, 0.2);stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:rgba(34, 211, 238, 0.05);stop-opacity:1" />
+                    </linearGradient>
                 </defs>
                 
                 <!-- Связи (Кривые Безье) - Banking Agent Flow -->
-                <!-- Start -> Router -->
-                <path d="M 200 200 Q 350 180, 500 200" stroke="rgb(100, 116, 139)" stroke-width="2" fill="none" opacity="0.5" marker-end="url(#arrowhead)" class="flow-line" />
+                <!-- Start -> Intent Router -->
+                <path d="M 120 300 Q 250 280, 380 300" stroke="rgb(51, 65, 85)" stroke-width="2.5" fill="none" marker-end="url(#arrowhead)" class="flow-line" />
                 
-                <!-- Router -> Check_Balance -->
-                <path d="M 500 200 Q 600 220, 700 280" stroke="rgb(34, 211, 238)" stroke-width="2" fill="none" opacity="0.6" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-1" />
+                <!-- Intent Router -> Auth Agent -->
+                <path d="M 380 300 Q 480 320, 580 380" stroke="rgb(34, 211, 238)" stroke-width="2.5" fill="none" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-1" />
                 
-                <!-- Router -> Transfer_Funds -->
-                <path d="M 500 200 Q 550 300, 600 400" stroke="rgb(34, 211, 238)" stroke-width="2" fill="none" opacity="0.6" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-1" />
+                <!-- Auth Agent -> Account Agent -->
+                <path d="M 580 380 Q 680 400, 780 420" stroke="rgb(34, 211, 238)" stroke-width="2.5" fill="none" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-2" />
                 
-                <!-- Check_Balance -> Fraud_Check -->
-                <path d="M 700 280 Q 750 350, 800 420" stroke="rgb(34, 211, 238)" stroke-width="2" fill="none" opacity="0.6" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-2" />
+                <!-- Account Agent -> Tool: GetBalance -->
+                <path d="M 780 420 Q 850 450, 920 480" stroke="rgb(34, 211, 238)" stroke-width="2.5" fill="none" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-3" />
                 
-                <!-- Transfer_Funds -> Fraud_Check -->
-                <path d="M 600 400 Q 700 410, 800 420" stroke="rgb(34, 211, 238)" stroke-width="2" fill="none" opacity="0.6" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-2" />
+                <!-- Account Agent -> Transfer Agent -->
+                <path d="M 780 420 Q 820 500, 860 580" stroke="rgb(34, 211, 238)" stroke-width="2.5" fill="none" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-3" />
                 
-                <!-- Fraud_Check -> End -->
-                <path d="M 800 420 Q 950 500, 1100 600" stroke="rgb(34, 211, 238)" stroke-width="2" fill="none" opacity="0.6" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-3" />
+                <!-- Tool: GetBalance -> Transfer Agent -->
+                <path d="M 920 480 Q 900 530, 860 580" stroke="rgb(34, 211, 238)" stroke-width="2.5" fill="none" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-4" />
+                
+                <!-- Transfer Agent -> Risk Guardrail -->
+                <path d="M 860 580 Q 950 600, 1040 620" stroke="rgb(34, 211, 238)" stroke-width="2.5" fill="none" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-4" />
+                
+                <!-- Risk Guardrail -> Tool: Execute Transaction -->
+                <path d="M 1040 620 Q 1120 640, 1200 660" stroke="rgb(34, 211, 238)" stroke-width="2.5" fill="none" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-5" />
+                
+                <!-- Tool: Execute Transaction -> End -->
+                <path d="M 1200 660 Q 1280 680, 1360 700" stroke="rgb(34, 211, 238)" stroke-width="2.5" fill="none" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-5" />
                 
                 <!-- Узлы (Rounded Rectangles) - Banking Agent Nodes -->
-                <!-- Start (User Query) -->
-                <rect x="150" y="150" width="100" height="60" rx="8" fill="rgba(34, 211, 238, 0.15)" stroke="rgb(34, 211, 238)" stroke-width="1.5" opacity="0.8" class="node-pulse" filter="url(#glow)" />
-                <text x="200" y="175" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="12" font-weight="600" font-family="monospace">Start</text>
-                <text x="200" y="190" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="10" font-family="monospace">User Query</text>
+                <!-- Start -->
+                <rect x="70" y="250" width="100" height="70" rx="10" fill="url(#nodeGradient)" stroke="rgb(34, 211, 238)" stroke-width="2" class="node-pulse" filter="url(#glow)" />
+                <text x="120" y="280" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="13" font-weight="700" font-family="'Inter', monospace">Start</text>
+                <text x="120" y="300" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="10" font-family="'Inter', monospace">Input:</text>
+                <text x="120" y="315" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="10" font-family="'Inter', monospace">"Хочу перевести"</text>
                 
-                <!-- Router (Classifier) -->
-                <rect x="450" y="150" width="100" height="60" rx="8" fill="rgba(34, 211, 238, 0.15)" stroke="rgb(34, 211, 238)" stroke-width="1.5" opacity="0.8" class="node-pulse node-pulse-delay-1" filter="url(#glow)" />
-                <text x="500" y="175" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="12" font-weight="600" font-family="monospace">Router</text>
-                <text x="500" y="190" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="10" font-family="monospace">Classifier</text>
+                <!-- Intent Router (Classifier) -->
+                <rect x="330" y="250" width="100" height="70" rx="10" fill="url(#nodeGradient)" stroke="rgb(34, 211, 238)" stroke-width="2" class="node-pulse node-pulse-delay-1" filter="url(#glow)" />
+                <text x="380" y="280" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="13" font-weight="700" font-family="'Inter', monospace">Intent</text>
+                <text x="380" y="295" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="13" font-weight="700" font-family="'Inter', monospace">Router</text>
+                <text x="380" y="315" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="10" font-family="'Inter', monospace">Classifier</text>
                 
-                <!-- Check_Balance (Tool) -->
-                <rect x="650" y="230" width="100" height="60" rx="8" fill="rgba(34, 211, 238, 0.15)" stroke="rgb(34, 211, 238)" stroke-width="1.5" opacity="0.8" class="node-pulse node-pulse-delay-2" filter="url(#glow)" />
-                <text x="700" y="255" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="12" font-weight="600" font-family="monospace">Check</text>
-                <text x="700" y="270" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="10" font-family="monospace">Balance</text>
+                <!-- Auth Agent -->
+                <rect x="530" y="330" width="100" height="70" rx="10" fill="url(#nodeGradient)" stroke="rgb(34, 211, 238)" stroke-width="2" class="node-pulse node-pulse-delay-2" filter="url(#glow)" />
+                <text x="580" y="360" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="13" font-weight="700" font-family="'Inter', monospace">Auth</text>
+                <text x="580" y="375" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="13" font-weight="700" font-family="'Inter', monospace">Agent</text>
+                <text x="580" y="395" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="10" font-family="'Inter', monospace">Check ID</text>
                 
-                <!-- Transfer_Funds (Tool) -->
-                <rect x="550" y="350" width="100" height="60" rx="8" fill="rgba(34, 211, 238, 0.15)" stroke="rgb(34, 211, 238)" stroke-width="1.5" opacity="0.8" class="node-pulse node-pulse-delay-2" filter="url(#glow)" />
-                <text x="600" y="375" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="12" font-weight="600" font-family="monospace">Transfer</text>
-                <text x="600" y="390" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="10" font-family="monospace">Funds</text>
+                <!-- Account Agent -->
+                <rect x="730" y="370" width="100" height="70" rx="10" fill="url(#nodeGradient)" stroke="rgb(34, 211, 238)" stroke-width="2" class="node-pulse node-pulse-delay-3" filter="url(#glow)" />
+                <text x="780" y="400" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="13" font-weight="700" font-family="'Inter', monospace">Account</text>
+                <text x="780" y="415" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="13" font-weight="700" font-family="'Inter', monospace">Agent</text>
+                <text x="780" y="435" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="10" font-family="'Inter', monospace">Node</text>
                 
-                <!-- Fraud_Check (Guardrail) -->
-                <rect x="750" y="370" width="100" height="60" rx="8" fill="rgba(34, 211, 238, 0.15)" stroke="rgb(34, 211, 238)" stroke-width="1.5" opacity="0.8" class="node-pulse node-pulse-delay-3" filter="url(#glow)" />
-                <text x="800" y="395" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="12" font-weight="600" font-family="monospace">Fraud</text>
-                <text x="800" y="410" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="10" font-family="monospace">Check</text>
+                <!-- Tool: GetBalance (Database Icon) -->
+                <rect x="870" y="430" width="100" height="70" rx="10" fill="url(#nodeGradient)" stroke="rgb(34, 211, 238)" stroke-width="2" class="node-pulse node-pulse-delay-4" filter="url(#glow)" />
+                <text x="920" y="460" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="12" font-weight="700" font-family="'Inter', monospace">Tool:</text>
+                <text x="920" y="475" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="12" font-weight="700" font-family="'Inter', monospace">GetBalance</text>
+                <text x="920" y="495" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="9" font-family="'Inter', monospace">Database</text>
                 
-                <!-- End (Response) -->
-                <rect x="1050" y="550" width="100" height="60" rx="8" fill="rgba(34, 211, 238, 0.15)" stroke="rgb(34, 211, 238)" stroke-width="1.5" opacity="0.8" class="node-pulse node-pulse-delay-4" filter="url(#glow)" />
-                <text x="1100" y="575" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="12" font-weight="600" font-family="monospace">End</text>
-                <text x="1100" y="590" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="10" font-family="monospace">Response</text>
+                <!-- Transfer Agent -->
+                <rect x="810" y="530" width="100" height="70" rx="10" fill="url(#nodeGradient)" stroke="rgb(34, 211, 238)" stroke-width="2" class="node-pulse node-pulse-delay-5" filter="url(#glow)" />
+                <text x="860" y="560" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="13" font-weight="700" font-family="'Inter', monospace">Transfer</text>
+                <text x="860" y="575" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="13" font-weight="700" font-family="'Inter', monospace">Agent</text>
+                <text x="860" y="595" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="10" font-family="'Inter', monospace">Node</text>
+                
+                <!-- Risk Guardrail (Check Fraud) -->
+                <rect x="990" y="570" width="100" height="70" rx="10" fill="url(#nodeGradient)" stroke="rgb(34, 211, 238)" stroke-width="2" class="node-pulse node-pulse-delay-6" filter="url(#glow)" />
+                <text x="1040" y="600" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="13" font-weight="700" font-family="'Inter', monospace">Risk</text>
+                <text x="1040" y="615" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="13" font-weight="700" font-family="'Inter', monospace">Guardrail</text>
+                <text x="1040" y="635" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="10" font-family="'Inter', monospace">Check Fraud</text>
+                
+                <!-- Tool: Execute Transaction (API Call) -->
+                <rect x="1150" y="610" width="100" height="70" rx="10" fill="url(#nodeGradient)" stroke="rgb(34, 211, 238)" stroke-width="2" class="node-pulse node-pulse-delay-6" filter="url(#glow)" />
+                <text x="1200" y="640" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="12" font-weight="700" font-family="'Inter', monospace">Tool:</text>
+                <text x="1200" y="655" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="11" font-weight="700" font-family="'Inter', monospace">Execute</text>
+                <text x="1200" y="670" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="9" font-family="'Inter', monospace">API Call</text>
+                
+                <!-- End -->
+                <rect x="1310" y="650" width="100" height="70" rx="10" fill="url(#nodeGradient)" stroke="rgb(34, 211, 238)" stroke-width="2" class="node-pulse node-pulse-delay-7" filter="url(#glow)" />
+                <text x="1360" y="680" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="13" font-weight="700" font-family="'Inter', monospace">End</text>
+                <text x="1360" y="700" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="10" font-family="'Inter', monospace">Output</text>
+                
+                <!-- Анимированные лейблы (логи) -->
+                <!-- Лейбл для Tool: GetBalance -->
+                <g class="label-animation">
+                    <rect x="1020" y="440" width="180" height="28" rx="6" fill="rgba(15, 23, 42, 0.9)" stroke="rgb(34, 211, 238)" stroke-width="1" />
+                    <text x="1110" y="458" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="10" font-family="'Inter', monospace">GET /api/v1/balance 200 OK</text>
+                </g>
+                
+                <!-- Лейбл для Risk Guardrail -->
+                <g class="label-animation-delay">
+                    <rect x="1100" y="600" width="200" height="28" rx="6" fill="rgba(15, 23, 42, 0.9)" stroke="rgb(34, 211, 238)" stroke-width="1" />
+                    <text x="1200" y="618" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="10" font-family="'Inter', monospace">Fraud Score: 0.02 (Safe)</text>
+                </g>
             </svg>
             
             <!-- Контент (Поверх графики) -->
@@ -257,18 +347,18 @@
         <!-- СЕКЦИЯ 3: МАТЕРИАЛЫ (3 колонки на десктопе) -->
         <section class="max-w-6xl mx-auto px-6 py-16">
             <h2 class="text-3xl md:text-5xl font-bold text-white mb-12 text-center text-shadow">Материалы</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr">
                 
                 <!-- Card 1: Product -->
-                <a href="presentations/product.html" target="_blank" class="relative group bg-slate-900/50 border border-white/10 p-6 rounded-2xl hover:border-cyan-500/30 transition-all block">
-                    <div class="flex items-start justify-between gap-4">
+                <article class="h-full flex flex-col bg-slate-900/50 border border-white/10 rounded-2xl hover:border-cyan-500/30 transition-all">
+                    <div class="flex-1 flex flex-col p-6">
                         <div class="flex-1">
                             <h3 class="text-xl md:text-2xl font-bold text-white mb-3 text-shadow">Продуктовая презентация</h3>
                             <p class="text-sm md:text-base text-slate-400 leading-relaxed text-shadow">
                                 Полный обзор функционала, архитектуры, ROI
                             </p>
                         </div>
-                        <div class="flex items-center gap-2 relative z-10" onclick="event.stopPropagation(); event.preventDefault();">
+                        <div class="flex items-center gap-2 mt-auto pt-4">
                             <!-- Web Button -->
                             <a href="presentations/product.html" target="_blank" onclick="event.stopPropagation();" class="p-2 rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-slate-400 hover:text-cyan-400 transition-colors" title="Открыть Web-версию">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -292,18 +382,18 @@
                             </button>
                         </div>
                     </div>
-                </a>
+                </article>
 
                 <!-- Card 2: B2B Sales -->
-                <a href="presentations/b2b-sales.html" target="_blank" class="relative group bg-slate-900/50 border border-white/10 p-6 rounded-2xl hover:border-cyan-500/30 transition-all block">
-                    <div class="flex items-start justify-between gap-4">
+                <article class="h-full flex flex-col bg-slate-900/50 border border-white/10 rounded-2xl hover:border-cyan-500/30 transition-all">
+                    <div class="flex-1 flex flex-col p-6">
                         <div class="flex-1">
                             <h3 class="text-xl md:text-2xl font-bold text-white mb-3 text-shadow">B2B Sales презентация</h3>
                             <p class="text-sm md:text-base text-slate-400 leading-relaxed text-shadow">
                                 Проблемы, решение, примеры внедрения, ROI
                             </p>
                         </div>
-                        <div class="flex items-center gap-2 relative z-10" onclick="event.stopPropagation(); event.preventDefault();">
+                        <div class="flex items-center gap-2 mt-auto pt-4">
                             <!-- Web Button -->
                             <a href="presentations/b2b-sales.html" target="_blank" onclick="event.stopPropagation();" class="p-2 rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-slate-400 hover:text-cyan-400 transition-colors" title="Открыть Web-версию">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -327,18 +417,18 @@
                             </button>
                         </div>
                     </div>
-                </a>
+                </article>
 
                 <!-- Card 3: Investor Pitch -->
-                <a href="presentations/investor-pitch.html" target="_blank" class="relative group bg-slate-900/50 border border-white/10 p-6 rounded-2xl hover:border-cyan-500/30 transition-all block">
-                    <div class="flex items-start justify-between gap-4">
+                <article class="h-full flex flex-col bg-slate-900/50 border border-white/10 rounded-2xl hover:border-cyan-500/30 transition-all">
+                    <div class="flex-1 flex flex-col p-6">
                         <div class="flex-1">
                             <h3 class="text-xl md:text-2xl font-bold text-white mb-3 text-shadow">Investor Pitch презентация</h3>
                             <p class="text-sm md:text-base text-slate-400 leading-relaxed text-shadow">
                                 Рынок, команда, финансовые показатели, тракшн
                             </p>
                         </div>
-                        <div class="flex items-center gap-2 relative z-10" onclick="event.stopPropagation(); event.preventDefault();">
+                        <div class="flex items-center gap-2 mt-auto pt-4">
                             <!-- Web Button -->
                             <a href="presentations/investor-pitch.html" target="_blank" onclick="event.stopPropagation();" class="p-2 rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-slate-400 hover:text-cyan-400 transition-colors" title="Открыть Web-версию">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -362,7 +452,7 @@
                             </button>
                         </div>
                     </div>
-                </a>
+                </article>
 
             </div>
         </section>
