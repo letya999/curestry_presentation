@@ -43,19 +43,43 @@
             font-family: 'Inter', sans-serif;
         }
         
-        @keyframes pulse-glow {
-            0%, 100% {
-                opacity: 0.3;
-                filter: drop-shadow(0 0 2px rgba(34, 211, 238, 0.5));
+        @keyframes flow {
+            0% {
+                stroke-dashoffset: 0;
             }
-            50% {
-                opacity: 0.6;
-                filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.8));
+            100% {
+                stroke-dashoffset: 20;
             }
         }
         
+        @keyframes node-pulse {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+        
+        .flow-line {
+            stroke-dasharray: 4 4;
+            animation: flow 2s linear infinite;
+        }
+        
+        .flow-line-delay-1 {
+            animation-delay: 0.3s;
+        }
+        
+        .flow-line-delay-2 {
+            animation-delay: 0.6s;
+        }
+        
+        .flow-line-delay-3 {
+            animation-delay: 0.9s;
+        }
+        
         .node-pulse {
-            animation: pulse-glow 3s ease-in-out infinite;
+            animation: node-pulse 3s ease-in-out infinite;
         }
         
         .node-pulse-delay-1 {
@@ -73,190 +97,184 @@
         .node-pulse-delay-4 {
             animation-delay: 2s;
         }
-        
-        .node-pulse-delay-5 {
-            animation-delay: 2.5s;
-        }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-400 antialiased">
     <main class="min-h-screen">
         
-        <!-- СЕКЦИЯ 1: HERO (Вижн + Графика) -->
-        <section class="relative overflow-hidden min-h-[60vh] flex items-center justify-center">
+        <!-- СЕКЦИЯ 1: HERO (Широкая, с анимированным графом) -->
+        <section class="relative overflow-hidden min-h-[80vh] flex items-center justify-center">
             <!-- Фоновая SVG-графика (LangGraph стиль) -->
-            <svg class="absolute inset-0 z-0 w-full h-full opacity-20" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
-                <!-- Связи (Edges) -->
-                <path d="M 150 200 L 250 150" stroke="rgb(34, 211, 238)" stroke-width="1.5" fill="none" opacity="0.4" marker-end="url(#arrowhead)" />
-                <path d="M 250 150 L 400 180" stroke="rgb(34, 211, 238)" stroke-width="1.5" fill="none" opacity="0.4" marker-end="url(#arrowhead)" />
-                <path d="M 400 180 L 550 200" stroke="rgb(34, 211, 238)" stroke-width="1.5" fill="none" opacity="0.4" marker-end="url(#arrowhead)" />
-                <path d="M 550 200 L 650 280" stroke="rgb(34, 211, 238)" stroke-width="1.5" fill="none" opacity="0.4" marker-end="url(#arrowhead)" />
-                <path d="M 150 200 L 200 320" stroke="rgb(34, 211, 238)" stroke-width="1.5" fill="none" opacity="0.4" marker-end="url(#arrowhead)" />
-                <path d="M 200 320 L 350 350" stroke="rgb(34, 211, 238)" stroke-width="1.5" fill="none" opacity="0.4" marker-end="url(#arrowhead)" />
-                <path d="M 350 350 L 500 380" stroke="rgb(34, 211, 238)" stroke-width="1.5" fill="none" opacity="0.4" marker-end="url(#arrowhead)" />
-                <path d="M 500 380 L 650 400" stroke="rgb(34, 211, 238)" stroke-width="1.5" fill="none" opacity="0.4" marker-end="url(#arrowhead)" />
-                <path d="M 250 150 L 300 280" stroke="rgb(34, 211, 238)" stroke-width="1.5" fill="none" opacity="0.4" marker-end="url(#arrowhead)" />
-                <path d="M 300 280 L 450 300" stroke="rgb(34, 211, 238)" stroke-width="1.5" fill="none" opacity="0.4" marker-end="url(#arrowhead)" />
-                <path d="M 450 300 L 600 320" stroke="rgb(34, 211, 238)" stroke-width="1.5" fill="none" opacity="0.4" marker-end="url(#arrowhead)" />
-                <path d="M 400 180 L 450 320" stroke="rgb(34, 211, 238)" stroke-width="1.5" fill="none" opacity="0.4" marker-end="url(#arrowhead)" />
-                
-                <!-- Стрелка для маркеров -->
+            <svg class="absolute inset-0 z-0 w-full h-full opacity-20 md:opacity-20" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                    <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-                        <polygon points="0 0, 6 3, 0 6" fill="rgb(34, 211, 238)" opacity="0.4" />
+                    <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                        <polygon points="0 0, 8 4, 0 8" fill="rgb(34, 211, 238)" opacity="0.6" />
                     </marker>
+                    <linearGradient id="nodeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:rgb(34, 211, 238);stop-opacity:0.8" />
+                        <stop offset="100%" style="stop-color:rgb(147, 51, 234);stop-opacity:0.8" />
+                    </linearGradient>
                 </defs>
                 
-                <!-- Узлы (Nodes) с анимацией -->
-                <circle cx="150" cy="200" r="4" fill="rgb(34, 211, 238)" class="node-pulse" />
-                <circle cx="250" cy="150" r="4" fill="rgb(34, 211, 238)" class="node-pulse node-pulse-delay-1" />
-                <circle cx="400" cy="180" r="4" fill="rgb(34, 211, 238)" class="node-pulse node-pulse-delay-2" />
-                <circle cx="550" cy="200" r="4" fill="rgb(34, 211, 238)" class="node-pulse node-pulse-delay-3" />
-                <circle cx="650" cy="280" r="4" fill="rgb(34, 211, 238)" class="node-pulse node-pulse-delay-4" />
-                <circle cx="200" cy="320" r="4" fill="rgb(34, 211, 238)" class="node-pulse node-pulse-delay-1" />
-                <circle cx="350" cy="350" r="4" fill="rgb(34, 211, 238)" class="node-pulse node-pulse-delay-2" />
-                <circle cx="500" cy="380" r="4" fill="rgb(34, 211, 238)" class="node-pulse node-pulse-delay-3" />
-                <circle cx="650" cy="400" r="4" fill="rgb(34, 211, 238)" class="node-pulse node-pulse-delay-4" />
-                <circle cx="300" cy="280" r="4" fill="rgb(34, 211, 238)" class="node-pulse node-pulse-delay-2" />
-                <circle cx="450" cy="300" r="4" fill="rgb(34, 211, 238)" class="node-pulse node-pulse-delay-3" />
-                <circle cx="600" cy="320" r="4" fill="rgb(34, 211, 238)" class="node-pulse node-pulse-delay-4" />
-                <circle cx="450" cy="320" r="4" fill="rgb(34, 211, 238)" class="node-pulse node-pulse-delay-5" />
+                <!-- Связи (Кривые Безье) -->
+                <path d="M 200 200 Q 300 150, 400 180" stroke="rgb(34, 211, 238)" stroke-width="2" fill="none" opacity="0.4" marker-end="url(#arrowhead)" class="flow-line" />
+                <path d="M 400 180 Q 500 160, 600 200" stroke="rgb(34, 211, 238)" stroke-width="2" fill="none" opacity="0.4" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-1" />
+                <path d="M 600 200 Q 700 220, 800 280" stroke="rgb(34, 211, 238)" stroke-width="2" fill="none" opacity="0.4" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-2" />
+                <path d="M 200 200 Q 250 300, 300 400" stroke="rgb(147, 51, 234)" stroke-width="2" fill="none" opacity="0.4" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-1" />
+                <path d="M 300 400 Q 450 420, 600 450" stroke="rgb(147, 51, 234)" stroke-width="2" fill="none" opacity="0.4" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-2" />
+                <path d="M 400 180 Q 450 320, 500 450" stroke="rgb(34, 211, 238)" stroke-width="2" fill="none" opacity="0.4" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-3" />
+                <path d="M 600 200 Q 650 350, 700 500" stroke="rgb(147, 51, 234)" stroke-width="2" fill="none" opacity="0.4" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-2" />
+                <path d="M 800 280 Q 900 400, 1000 500" stroke="rgb(34, 211, 238)" stroke-width="2" fill="none" opacity="0.4" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-3" />
+                <path d="M 600 450 Q 750 480, 900 550" stroke="rgb(147, 51, 234)" stroke-width="2" fill="none" opacity="0.4" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-3" />
+                <path d="M 1000 500 Q 1050 600, 1100 700" stroke="rgb(34, 211, 238)" stroke-width="2" fill="none" opacity="0.4" marker-end="url(#arrowhead)" class="flow-line" />
+                
+                <!-- Узлы (Rounded Rectangles) -->
+                <rect x="150" y="150" width="100" height="60" rx="8" fill="url(#nodeGradient)" opacity="0.6" class="node-pulse" />
+                <text x="200" y="185" text-anchor="middle" fill="white" font-size="14" font-weight="600">Start</text>
+                
+                <rect x="350" y="130" width="100" height="60" rx="8" fill="url(#nodeGradient)" opacity="0.6" class="node-pulse node-pulse-delay-1" />
+                <text x="400" y="165" text-anchor="middle" fill="white" font-size="14" font-weight="600">LLM Agent</text>
+                
+                <rect x="550" y="150" width="100" height="60" rx="8" fill="url(#nodeGradient)" opacity="0.6" class="node-pulse node-pulse-delay-2" />
+                <text x="600" y="185" text-anchor="middle" fill="white" font-size="14" font-weight="600">Tool Call</text>
+                
+                <rect x="750" y="230" width="100" height="60" rx="8" fill="url(#nodeGradient)" opacity="0.6" class="node-pulse node-pulse-delay-3" />
+                <text x="800" y="265" text-anchor="middle" fill="white" font-size="14" font-weight="600">Decision</text>
+                
+                <rect x="250" y="350" width="100" height="60" rx="8" fill="url(#nodeGradient)" opacity="0.6" class="node-pulse node-pulse-delay-1" />
+                <text x="300" y="385" text-anchor="middle" fill="white" font-size="14" font-weight="600">Process</text>
+                
+                <rect x="550" y="400" width="100" height="60" rx="8" fill="url(#nodeGradient)" opacity="0.6" class="node-pulse node-pulse-delay-2" />
+                <text x="600" y="435" text-anchor="middle" fill="white" font-size="14" font-weight="600">Validate</text>
+                
+                <rect x="850" y="500" width="100" height="60" rx="8" fill="url(#nodeGradient)" opacity="0.6" class="node-pulse node-pulse-delay-3" />
+                <text x="900" y="535" text-anchor="middle" fill="white" font-size="14" font-weight="600">Result</text>
+                
+                <rect x="1050" y="650" width="100" height="60" rx="8" fill="url(#nodeGradient)" opacity="0.6" class="node-pulse node-pulse-delay-4" />
+                <text x="1100" y="685" text-anchor="middle" fill="white" font-size="14" font-weight="600">End</text>
             </svg>
             
             <!-- Контент (Поверх графики) -->
-            <div class="relative z-10 max-w-4xl mx-auto px-5 py-20 text-center">
-                <h1 class="text-5xl md:text-6xl font-bold text-white mb-6">Curestry</h1>
-                <h2 class="text-2xl md:text-3xl font-semibold text-white mb-4">
-                    Отладка и оптимизация AI-агентов.
-                </h2>
-                <p class="text-lg md:text-xl text-slate-400 mb-8 max-w-2xl mx-auto">
-                    Находим и автоматически исправляем сбои в production за минуты, а не часы.
+            <div class="relative z-10 max-w-6xl mx-auto px-6 py-20 text-center">
+                <h1 class="text-4xl md:text-7xl font-bold text-white mb-6 leading-tight">
+                    Curestry — Платформа для отладки AI-агентов
+                </h1>
+                <p class="text-base md:text-lg text-slate-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+                    Находи сбои за 10 минут. Исправляй автоматически.
                 </p>
                 
                 <!-- Бейджи (Фичи) -->
                 <div class="flex flex-wrap justify-center gap-3">
-                    <span class="px-4 py-2 bg-cyan-500/20 border border-cyan-500/30 rounded-full text-sm text-cyan-400 font-medium">
+                    <span class="px-4 py-2 bg-cyan-500/20 border border-cyan-500/30 rounded-full text-sm md:text-base text-cyan-400 font-medium">
                         On-Premise
                     </span>
-                    <span class="px-4 py-2 bg-blue-500/20 border border-blue-500/30 rounded-full text-sm text-blue-400 font-medium">
+                    <span class="px-4 py-2 bg-blue-500/20 border border-blue-500/30 rounded-full text-sm md:text-base text-blue-400 font-medium">
                         Local Models
                     </span>
-                    <span class="px-4 py-2 bg-emerald-500/20 border border-emerald-500/30 rounded-full text-sm text-emerald-400 font-medium">
+                    <span class="px-4 py-2 bg-emerald-500/20 border border-emerald-500/30 rounded-full text-sm md:text-base text-emerald-400 font-medium">
                         Auto-Fix
                     </span>
                 </div>
             </div>
         </section>
 
-        <!-- СЕКЦИЯ 2: О ПРОДУКТЕ + ДИФФЕРЕНЦИАТОРЫ (Объединенная) -->
-        <section class="max-w-4xl mx-auto px-5 py-16">
-            <div class="bg-slate-900/50 border border-white/10 rounded-2xl p-8 md:p-10">
-                <p class="text-lg md:text-xl text-slate-300 mb-8 leading-relaxed">
-                    Единая on-premise платформа, объединяющая observability, RCA и self-healing для стабильности ваших агентских систем.
-                </p>
+        <!-- СЕКЦИЯ 2: ПОЧЕМУ МЫ (3 колонки на десктопе) -->
+        <section class="max-w-6xl mx-auto px-6 py-16">
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-12 text-center">Почему мы</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 
-                <div class="space-y-5">
-                    <div class="flex items-start gap-4">
-                        <svg class="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                <!-- Card 1: RCA + AutoFix -->
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 hover:bg-white/10 hover:border-cyan-500/30 transition-all duration-300">
+                    <div class="mb-4">
+                        <svg class="w-10 h-10 md:w-12 md:h-12 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
-                        <div>
-                            <h3 class="text-base font-semibold text-white mb-1">RCA + AutoFix</h3>
-                            <p class="text-sm text-slate-400 leading-relaxed">Автоматический поиск и исправление ошибок.</p>
-                        </div>
                     </div>
-                    
-                    <div class="flex items-start gap-4">
-                        <svg class="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        <div>
-                            <h3 class="text-base font-semibold text-white mb-1">Zero external APIs</h3>
-                            <p class="text-sm text-slate-400 leading-relaxed">Полный контроль данных и безопасность (On-premise).</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-start gap-4">
-                        <svg class="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        <div>
-                            <h3 class="text-base font-semibold text-white mb-1">Developer-first</h3>
-                            <p class="text-sm text-slate-400 leading-relaxed">Простая интеграция и SDK за часы, а не недели.</p>
-                        </div>
-                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3">RCA + AutoFix</h3>
+                    <p class="text-sm md:text-base text-slate-400 leading-relaxed">
+                        Автоматический поиск причин сбоев и их исправление без ручного вмешательства.
+                    </p>
                 </div>
+                
+                <!-- Card 2: On-Premise -->
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 hover:bg-white/10 hover:border-cyan-500/30 transition-all duration-300">
+                    <div class="mb-4">
+                        <svg class="w-10 h-10 md:w-12 md:h-12 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3">On-Premise</h3>
+                    <p class="text-sm md:text-base text-slate-400 leading-relaxed">
+                        Полный контроль данных и безопасность. Zero external APIs. Работает локально.
+                    </p>
+                </div>
+                
+                <!-- Card 3: Dev-First -->
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 hover:bg-white/10 hover:border-cyan-500/30 transition-all duration-300">
+                    <div class="mb-4">
+                        <svg class="w-10 h-10 md:w-12 md:h-12 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Dev-First</h3>
+                    <p class="text-sm md:text-base text-slate-400 leading-relaxed">
+                        Простая интеграция и SDK. Настройка за часы, а не недели.
+                    </p>
+                </div>
+                
             </div>
         </section>
 
-        <!-- СЕКЦИЯ 3: ПРЕЗЕНТАЦИИ (Роутер) -->
-        <section class="max-w-4xl mx-auto px-5 py-16">
-            <h2 class="text-2xl font-bold text-white mb-8">Материалы</h2>
-            <div class="space-y-4">
+        <!-- СЕКЦИЯ 3: МАТЕРИАЛЫ (3 колонки на десктопе) -->
+        <section class="max-w-6xl mx-auto px-6 py-16">
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-12 text-center">Материалы</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 
                 <!-- Card 1: Product -->
-                <article class="bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 hover:border-cyan-500/30 transition-all duration-300 hover:scale-[1.02]">
-                    <div class="flex items-center justify-between gap-4">
-                        <div class="flex-1">
-                            <h3 class="text-base font-bold text-white mb-1">Продуктовая презентация</h3>
-                            <p class="text-xs text-slate-400 leading-relaxed">Полный обзор функционала, архитектуры, ROI</p>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <a href="assets/pdf/curestry-product.pdf" download class="p-2 hover:bg-white/10 rounded-lg transition-colors" title="Скачать PDF">
-                                <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                                </svg>
-                            </a>
-                            <a href="presentations/product.html" class="p-2 hover:bg-white/10 rounded-lg transition-colors" title="Смотреть онлайн">
-                                <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                </svg>
-                            </a>
-                        </div>
+                <article class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 hover:bg-white/10 hover:border-cyan-500/30 transition-all duration-300 hover:scale-[1.02]">
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Продуктовая презентация</h3>
+                    <p class="text-sm md:text-base text-slate-400 mb-6 leading-relaxed">
+                        Полный обзор функционала, архитектуры, ROI
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <a href="assets/pdf/curestry-product.pdf" download class="flex-1 px-4 py-2 bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/30 text-cyan-400 font-semibold rounded-lg text-center transition-all duration-300 text-sm md:text-base">
+                            PDF
+                        </a>
+                        <a href="presentations/product.html" class="flex-1 px-4 py-2 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-lg text-center transition-all duration-300 text-sm md:text-base">
+                            Смотреть
+                        </a>
                     </div>
                 </article>
 
                 <!-- Card 2: B2B Sales -->
-                <article class="bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 hover:border-cyan-500/30 transition-all duration-300 hover:scale-[1.02]">
-                    <div class="flex items-center justify-between gap-4">
-                        <div class="flex-1">
-                            <h3 class="text-base font-bold text-white mb-1">B2B Sales презентация</h3>
-                            <p class="text-xs text-slate-400 leading-relaxed">Проблемы, решение, примеры внедрения, ROI</p>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <a href="assets/pdf/curestry-b2b-sales.pdf" download class="p-2 hover:bg-white/10 rounded-lg transition-colors" title="Скачать PDF">
-                                <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                                </svg>
-                            </a>
-                            <a href="presentations/b2b-sales.html" class="p-2 hover:bg-white/10 rounded-lg transition-colors" title="Смотреть онлайн">
-                                <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                </svg>
-                            </a>
-                        </div>
+                <article class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 hover:bg-white/10 hover:border-cyan-500/30 transition-all duration-300 hover:scale-[1.02]">
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3">B2B Sales презентация</h3>
+                    <p class="text-sm md:text-base text-slate-400 mb-6 leading-relaxed">
+                        Проблемы, решение, примеры внедрения, ROI
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <a href="assets/pdf/curestry-b2b-sales.pdf" download class="flex-1 px-4 py-2 bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/30 text-cyan-400 font-semibold rounded-lg text-center transition-all duration-300 text-sm md:text-base">
+                            PDF
+                        </a>
+                        <a href="presentations/b2b-sales.html" class="flex-1 px-4 py-2 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-lg text-center transition-all duration-300 text-sm md:text-base">
+                            Смотреть
+                        </a>
                     </div>
                 </article>
 
                 <!-- Card 3: Investor Pitch -->
-                <article class="bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 hover:border-cyan-500/30 transition-all duration-300 hover:scale-[1.02]">
-                    <div class="flex items-center justify-between gap-4">
-                        <div class="flex-1">
-                            <h3 class="text-base font-bold text-white mb-1">Investor Pitch презентация</h3>
-                            <p class="text-xs text-slate-400 leading-relaxed">Рынок, команда, финансовые показатели, тракшн</p>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <a href="assets/pdf/curestry-investor-pitch.pdf" download class="p-2 hover:bg-white/10 rounded-lg transition-colors" title="Скачать PDF">
-                                <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                                </svg>
-                            </a>
-                            <a href="presentations/investor-pitch.html" class="p-2 hover:bg-white/10 rounded-lg transition-colors" title="Смотреть онлайн">
-                                <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                </svg>
-                            </a>
-                        </div>
+                <article class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 hover:bg-white/10 hover:border-cyan-500/30 transition-all duration-300 hover:scale-[1.02]">
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Investor Pitch презентация</h3>
+                    <p class="text-sm md:text-base text-slate-400 mb-6 leading-relaxed">
+                        Рынок, команда, финансовые показатели, тракшн
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <a href="assets/pdf/curestry-investor-pitch.pdf" download class="flex-1 px-4 py-2 bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/30 text-cyan-400 font-semibold rounded-lg text-center transition-all duration-300 text-sm md:text-base">
+                            PDF
+                        </a>
+                        <a href="presentations/investor-pitch.html" class="flex-1 px-4 py-2 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-lg text-center transition-all duration-300 text-sm md:text-base">
+                            Смотреть
+                        </a>
                     </div>
                 </article>
 
@@ -264,19 +282,19 @@
         </section>
 
         <!-- СЕКЦИЯ 4: КОНТАКТЫ -->
-        <footer class="max-w-4xl mx-auto px-5 py-16 border-t border-white/10">
-            <div class="flex flex-col sm:flex-row gap-3 mb-6">
-                <a href="mailto:contact@curestry.com" class="flex-1 px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-lg text-center transition-all duration-300">
+        <footer class="max-w-6xl mx-auto px-6 py-16 border-t border-white/10">
+            <div class="flex flex-col md:flex-row gap-4 justify-center mb-6">
+                <a href="mailto:contact@curestry.com" class="px-8 py-3 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-lg text-center transition-all duration-300 text-base md:text-lg">
                     Email
                 </a>
-                <a href="https://wa.me/+1234567890" class="flex-1 px-6 py-3 border-2 border-cyan-500 hover:bg-cyan-500/10 text-cyan-400 font-semibold rounded-lg text-center transition-all duration-300">
+                <a href="https://wa.me/+1234567890" class="px-8 py-3 border-2 border-cyan-500 hover:bg-cyan-500/10 text-cyan-400 font-semibold rounded-lg text-center transition-all duration-300 text-base md:text-lg">
                     WhatsApp
                 </a>
-                <a href="https://t.me/curestry" class="flex-1 px-6 py-3 border-2 border-cyan-500 hover:bg-cyan-500/10 text-cyan-400 font-semibold rounded-lg text-center transition-all duration-300">
+                <a href="https://t.me/curestry" class="px-8 py-3 border-2 border-cyan-500 hover:bg-cyan-500/10 text-cyan-400 font-semibold rounded-lg text-center transition-all duration-300 text-base md:text-lg">
                     Telegram
                 </a>
             </div>
-            <p class="text-xs text-slate-500 text-center">
+            <p class="text-xs md:text-sm text-slate-500 text-center">
                 &copy; 2025 Curestry. All rights reserved.
             </p>
         </footer>
