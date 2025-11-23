@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Background -->
+  <rect width="100" height="100" rx="20" fill="#0f172a"/>
+
+  <!-- Abstract graph/network representing AI agents -->
+  <!-- Node 1 -->
+  <circle cx="30" cy="30" r="8" fill="#22d3ee" opacity="0.8"/>
+
+  <!-- Node 2 -->
+  <circle cx="70" cy="30" r="8" fill="#22d3ee" opacity="0.6"/>
+
+  <!-- Node 3 -->
+  <circle cx="50" cy="55" r="10" fill="#22d3ee"/>
+
+  <!-- Node 4 -->
+  <circle cx="30" cy="75" r="7" fill="#22d3ee" opacity="0.7"/>
+
+  <!-- Node 5 -->
+  <circle cx="70" cy="75" r="7" fill="#22d3ee" opacity="0.7"/>
+
+  <!-- Connections -->
+  <line x1="30" y1="30" x2="50" y2="55" stroke="#06b6d4" stroke-width="2" opacity="0.6"/>
+  <line x1="70" y1="30" x2="50" y2="55" stroke="#06b6d4" stroke-width="2" opacity="0.6"/>
+  <line x1="50" y1="55" x2="30" y2="75" stroke="#06b6d4" stroke-width="2" opacity="0.6"/>
+  <line x1="50" y1="55" x2="70" y2="75" stroke="#06b6d4" stroke-width="2" opacity="0.6"/>
+
+  <!-- Center highlight - represents debugging focus -->
+  <circle cx="50" cy="55" r="5" fill="#fff" opacity="0.9"/>
+</svg>
