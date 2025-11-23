@@ -231,52 +231,109 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 
                 <!-- Card 1: Product -->
-                <article class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 hover:bg-white/10 hover:border-cyan-500/30 transition-all duration-300 hover:scale-[1.02]">
-                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Продуктовая презентация</h3>
-                    <p class="text-sm md:text-base text-slate-400 mb-6 leading-relaxed">
-                        Полный обзор функционала, архитектуры, ROI
-                    </p>
-                    <div class="flex items-center gap-3">
-                        <a href="assets/pdf/curestry-product.pdf" download class="flex-1 px-4 py-2 bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/30 text-cyan-400 font-semibold rounded-lg text-center transition-all duration-300 text-sm md:text-base">
-                            PDF
-                        </a>
-                        <a href="presentations/product.html" class="flex-1 px-4 py-2 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-lg text-center transition-all duration-300 text-sm md:text-base">
-                            Смотреть
-                        </a>
+                <a href="presentations/product.html" target="_blank" class="relative group bg-slate-900/50 border border-white/10 p-6 rounded-2xl hover:border-cyan-500/30 transition-all block">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex-1">
+                            <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Продуктовая презентация</h3>
+                            <p class="text-sm md:text-base text-slate-400 leading-relaxed">
+                                Полный обзор функционала, архитектуры, ROI
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-2 relative z-10" onclick="event.stopPropagation(); event.preventDefault();">
+                            <!-- Web Button -->
+                            <a href="presentations/product.html" target="_blank" onclick="event.stopPropagation();" class="p-2 rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-slate-400 hover:text-cyan-400 transition-colors" title="Открыть Web-версию">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                                </svg>
+                            </a>
+                            <!-- PDF Button -->
+                            <a href="assets/pdf/curestry-product.pdf" download onclick="event.stopPropagation();" class="p-2 rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-slate-400 hover:text-cyan-400 transition-colors" title="Скачать PDF">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                                </svg>
+                            </a>
+                            <!-- Link Button -->
+                            <button onclick="copyLink('presentations/product.html', this); event.stopPropagation();" class="p-2 rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-slate-400 hover:text-cyan-400 transition-colors" title="Копировать ссылку">
+                                <svg class="w-5 h-5 link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                                </svg>
+                                <svg class="w-5 h-5 check-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
-                </article>
+                </a>
 
                 <!-- Card 2: B2B Sales -->
-                <article class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 hover:bg-white/10 hover:border-cyan-500/30 transition-all duration-300 hover:scale-[1.02]">
-                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3">B2B Sales презентация</h3>
-                    <p class="text-sm md:text-base text-slate-400 mb-6 leading-relaxed">
-                        Проблемы, решение, примеры внедрения, ROI
-                    </p>
-                    <div class="flex items-center gap-3">
-                        <a href="assets/pdf/curestry-b2b-sales.pdf" download class="flex-1 px-4 py-2 bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/30 text-cyan-400 font-semibold rounded-lg text-center transition-all duration-300 text-sm md:text-base">
-                            PDF
-                        </a>
-                        <a href="presentations/b2b-sales.html" class="flex-1 px-4 py-2 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-lg text-center transition-all duration-300 text-sm md:text-base">
-                            Смотреть
-                        </a>
+                <a href="presentations/b2b-sales.html" target="_blank" class="relative group bg-slate-900/50 border border-white/10 p-6 rounded-2xl hover:border-cyan-500/30 transition-all block">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex-1">
+                            <h3 class="text-xl md:text-2xl font-bold text-white mb-3">B2B Sales презентация</h3>
+                            <p class="text-sm md:text-base text-slate-400 leading-relaxed">
+                                Проблемы, решение, примеры внедрения, ROI
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-2 relative z-10" onclick="event.stopPropagation(); event.preventDefault();">
+                            <!-- Web Button -->
+                            <a href="presentations/b2b-sales.html" target="_blank" onclick="event.stopPropagation();" class="p-2 rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-slate-400 hover:text-cyan-400 transition-colors" title="Открыть Web-версию">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                                </svg>
+                            </a>
+                            <!-- PDF Button -->
+                            <a href="assets/pdf/curestry-b2b-sales.pdf" download onclick="event.stopPropagation();" class="p-2 rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-slate-400 hover:text-cyan-400 transition-colors" title="Скачать PDF">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                                </svg>
+                            </a>
+                            <!-- Link Button -->
+                            <button onclick="copyLink('presentations/b2b-sales.html', this); event.stopPropagation();" class="p-2 rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-slate-400 hover:text-cyan-400 transition-colors" title="Копировать ссылку">
+                                <svg class="w-5 h-5 link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                                </svg>
+                                <svg class="w-5 h-5 check-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
-                </article>
+                </a>
 
                 <!-- Card 3: Investor Pitch -->
-                <article class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 hover:bg-white/10 hover:border-cyan-500/30 transition-all duration-300 hover:scale-[1.02]">
-                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Investor Pitch презентация</h3>
-                    <p class="text-sm md:text-base text-slate-400 mb-6 leading-relaxed">
-                        Рынок, команда, финансовые показатели, тракшн
-                    </p>
-                    <div class="flex items-center gap-3">
-                        <a href="assets/pdf/curestry-investor-pitch.pdf" download class="flex-1 px-4 py-2 bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/30 text-cyan-400 font-semibold rounded-lg text-center transition-all duration-300 text-sm md:text-base">
-                            PDF
-                        </a>
-                        <a href="presentations/investor-pitch.html" class="flex-1 px-4 py-2 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-lg text-center transition-all duration-300 text-sm md:text-base">
-                            Смотреть
-                        </a>
+                <a href="presentations/investor-pitch.html" target="_blank" class="relative group bg-slate-900/50 border border-white/10 p-6 rounded-2xl hover:border-cyan-500/30 transition-all block">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex-1">
+                            <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Investor Pitch презентация</h3>
+                            <p class="text-sm md:text-base text-slate-400 leading-relaxed">
+                                Рынок, команда, финансовые показатели, тракшн
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-2 relative z-10" onclick="event.stopPropagation(); event.preventDefault();">
+                            <!-- Web Button -->
+                            <a href="presentations/investor-pitch.html" target="_blank" onclick="event.stopPropagation();" class="p-2 rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-slate-400 hover:text-cyan-400 transition-colors" title="Открыть Web-версию">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                                </svg>
+                            </a>
+                            <!-- PDF Button -->
+                            <a href="assets/pdf/curestry-investor-pitch.pdf" download onclick="event.stopPropagation();" class="p-2 rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-slate-400 hover:text-cyan-400 transition-colors" title="Скачать PDF">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                                </svg>
+                            </a>
+                            <!-- Link Button -->
+                            <button onclick="copyLink('presentations/investor-pitch.html', this); event.stopPropagation();" class="p-2 rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-slate-400 hover:text-cyan-400 transition-colors" title="Копировать ссылку">
+                                <svg class="w-5 h-5 link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                                </svg>
+                                <svg class="w-5 h-5 check-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
-                </article>
+                </a>
 
             </div>
         </section>
@@ -302,5 +359,57 @@
     </main>
 
     <script src="assets/js/main.js"></script>
+    <script>
+        // Copy link to clipboard function
+        function copyLink(relativePath, button) {
+            event.stopPropagation();
+            event.preventDefault();
+            
+            const fullUrl = window.location.origin + (window.location.pathname.endsWith('/') ? '' : '/') + relativePath;
+            
+            // Copy to clipboard
+            navigator.clipboard.writeText(fullUrl).then(() => {
+                // Visual feedback: swap icons
+                const linkIcon = button.querySelector('.link-icon');
+                const checkIcon = button.querySelector('.check-icon');
+                
+                if (linkIcon && checkIcon) {
+                    linkIcon.classList.add('hidden');
+                    checkIcon.classList.remove('hidden');
+                    
+                    // Reset after 2 seconds
+                    setTimeout(() => {
+                        linkIcon.classList.remove('hidden');
+                        checkIcon.classList.add('hidden');
+                    }, 2000);
+                }
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = fullUrl;
+                textArea.style.position = 'fixed';
+                textArea.style.opacity = '0';
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    const linkIcon = button.querySelector('.link-icon');
+                    const checkIcon = button.querySelector('.check-icon');
+                    if (linkIcon && checkIcon) {
+                        linkIcon.classList.add('hidden');
+                        checkIcon.classList.remove('hidden');
+                        setTimeout(() => {
+                            linkIcon.classList.remove('hidden');
+                            checkIcon.classList.add('hidden');
+                        }, 2000);
+                    }
+                } catch (err) {
+                    console.error('Fallback copy failed:', err);
+                }
+                document.body.removeChild(textArea);
+            });
+        }
+    </script>
 </body>
 </html>
