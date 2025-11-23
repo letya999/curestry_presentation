@@ -97,5 +97,5 @@ Beta Partners: Botable, Convinco, Diffuzio
 
 Team: CEO (Design/Marketing), CTO (LLM Engineer), COO (Product/Dev), Backend Engineers
 
-Experience: 10+ years with government clients (Kazakhstan), Yandex, Twinby
+Experience: 5+ years with government clients (Kazakhstan), Yandex, Twinby
 
