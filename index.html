@@ -113,6 +113,110 @@
         .node-label {
             transition: opacity 0.3s ease;
         }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, rgba(34, 211, 238, 0.6), rgba(6, 182, 212, 0.6));
+            border-radius: 10px;
+            border: 2px solid rgba(15, 23, 42, 0.5);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, rgba(34, 211, 238, 0.8), rgba(6, 182, 212, 0.8));
+        }
+
+        /* Firefox */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(34, 211, 238, 0.6) rgba(15, 23, 42, 0.5);
+        }
+
+        /* Marquee/Running line */
+        .integration-marquee {
+            overflow: hidden;
+            background: linear-gradient(90deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.8) 50%, rgba(15, 23, 42, 0.8) 100%);
+            border-top: 1px solid rgba(34, 211, 238, 0.2);
+            border-bottom: 1px solid rgba(34, 211, 238, 0.2);
+            padding: 24px 0;
+            position: relative;
+        }
+
+        .marquee-content {
+            display: flex;
+            animation: marquee 40s linear infinite;
+            gap: 60px;
+        }
+
+        .marquee-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .marquee-logo {
+            width: 36px;
+            height: 36px;
+            background: rgba(34, 211, 238, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            padding: 8px;
+        }
+
+        .marquee-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: rgb(148, 163, 184);
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0%);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .marquee-content {
+                animation: marquee 25s linear infinite;
+            }
+            .marquee-logo {
+                width: 28px;
+                height: 28px;
+                font-size: 16px;
+            }
+            .marquee-text {
+                font-size: 14px;
+            }
+
+            /* Make graph visible on mobile */
+            #agent-graph {
+                opacity: 0.6 !important;
+                transform: scale(0.8);
+            }
+
+            /* Adjust SVG viewBox for mobile */
+            header svg {
+                object-fit: contain;
+            }
+        }
     </style>
 </head>
 <body class="bg-gradient-to-b from-slate-950/80 via-slate-950/95 to-slate-950 text-slate-400 antialiased">
@@ -137,113 +241,133 @@
                     </marker>
                 </defs>
 
-                <!-- Edges (Connections) - Main Flow -->
-                <path id="edge-0-1" d="M 120 200 Q 180 200, 240 220" class="graph-edge" marker-end="url(#arrowhead)" />
-                <path id="edge-1-2" d="M 290 240 Q 370 260, 450 280" class="graph-edge" marker-end="url(#arrowhead)" />
-                <path id="edge-2-3" d="M 500 300 Q 550 310, 600 320" class="graph-edge" marker-end="url(#arrowhead)" />
-                <path id="edge-3-4" d="M 650 340 Q 690 370, 730 400" class="graph-edge" marker-end="url(#arrowhead)" />
-                <path id="edge-4-5" d="M 780 420 Q 850 440, 920 460" class="graph-edge" marker-end="url(#arrowhead)" />
-                <path id="edge-5-6" d="M 970 480 Q 1040 500, 1110 520" class="graph-edge" marker-end="url(#arrowhead)" />
-                <path id="edge-6-7" d="M 1160 540 Q 1200 560, 1240 580" class="graph-edge" marker-end="url(#arrowhead)" />
-                <path id="edge-7-8" d="M 1290 600 Q 1300 630, 1310 660" class="graph-edge" marker-end="url(#arrowhead)" />
+                <!-- MAIN BRANCH (Top) - More curved paths -->
+                <path id="edge-0-1" d="M 120 150 Q 180 140, 240 150" class="graph-edge" marker-end="url(#arrowhead)" />
+                <path id="edge-1-2" d="M 340 150 Q 400 140, 460 160" class="graph-edge" marker-end="url(#arrowhead)" />
+                <path id="edge-2-3" d="M 560 160 Q 630 145, 700 170" class="graph-edge" marker-end="url(#arrowhead)" />
+                <path id="edge-3-4" d="M 800 170 Q 870 160, 940 180" class="graph-edge" marker-end="url(#arrowhead)" />
+                <path id="edge-4-5" d="M 1040 180 Q 1100 175, 1160 190" class="graph-edge" marker-end="url(#arrowhead)" />
+                <path id="edge-5-8" d="M 1260 190 Q 1300 200, 1330 220" class="graph-edge" marker-end="url(#arrowhead)" />
 
-                <!-- Parallel Flow - Logging Branch -->
-                <path id="edge-1-9" d="M 265 260 Q 265 340, 265 420" class="graph-edge" marker-end="url(#arrowhead)" />
-                <path id="edge-9-10" d="M 265 470 Q 265 550, 265 630" class="graph-edge" marker-end="url(#arrowhead)" />
+                <!-- MIDDLE BRANCH (Logging/Metrics) - Parallel flow -->
+                <path id="edge-0-6" d="M 100 180 Q 100 300, 120 400" class="graph-edge" marker-end="url(#arrowhead)" />
+                <path id="edge-6-7" d="M 170 400 Q 250 400, 330 410" class="graph-edge" marker-end="url(#arrowhead)" />
+                <path id="edge-7-9" d="M 430 410 Q 550 405, 670 420" class="graph-edge" marker-end="url(#arrowhead)" />
+                <path id="edge-9-10" d="M 770 420 Q 900 415, 1030 430" class="graph-edge" marker-end="url(#arrowhead)" />
+                <path id="edge-10-8" d="M 1130 430 Q 1230 380, 1330 260" class="graph-edge" marker-end="url(#arrowhead)" />
 
-                <!-- Risk Analysis Branch -->
-                <path id="edge-4-11" d="M 755 440 Q 820 520, 885 600" class="graph-edge" marker-end="url(#arrowhead)" />
-                <path id="edge-11-7" d="M 935 620 Q 1090 610, 1240 600" class="graph-edge" marker-end="url(#arrowhead)" />
+                <!-- BOTTOM BRANCH (Risk Analysis) - Third parallel path -->
+                <path id="edge-1-11" d="M 290 180 Q 290 350, 300 600" class="graph-edge" marker-end="url(#arrowhead)" />
+                <path id="edge-11-12" d="M 350 600 Q 500 595, 650 610" class="graph-edge" marker-end="url(#arrowhead)" />
+                <path id="edge-12-13" d="M 750 610 Q 900 605, 1050 620" class="graph-edge" marker-end="url(#arrowhead)" />
+                <path id="edge-13-8" d="M 1150 620 Q 1240 520, 1330 280" class="graph-edge" marker-end="url(#arrowhead)" />
 
                 <!-- Nodes -->
+                <!-- MAIN BRANCH (Top) -->
                 <!-- Node 0: START -->
                 <g id="node-0">
-                    <rect x="70" y="180" width="100" height="60" rx="8" class="graph-node idle" />
-                    <text x="120" y="205" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">START</text>
-                    <text x="120" y="222" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">User Input</text>
+                    <rect x="70" y="120" width="100" height="60" rx="8" class="graph-node idle" />
+                    <text x="120" y="145" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">START</text>
+                    <text x="120" y="162" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">User Input</text>
                 </g>
 
                 <!-- Node 1: ROUTER -->
                 <g id="node-1">
-                    <rect x="240" y="200" width="100" height="60" rx="8" class="graph-node idle" />
-                    <text x="290" y="220" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">ROUTER</text>
-                    <text x="290" y="237" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">Intent Classifier</text>
-                    <text x="290" y="252" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="7" font-weight="600" font-family="'Inter', sans-serif">● AI Agent</text>
+                    <rect x="240" y="120" width="100" height="60" rx="8" class="graph-node idle" />
+                    <text x="290" y="140" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">ROUTER</text>
+                    <text x="290" y="157" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">Intent</text>
+                    <text x="290" y="172" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="7" font-weight="600" font-family="'Inter', sans-serif">● AI Agent</text>
                 </g>
 
-                <!-- Node 2: AUTH_CHECK -->
+                <!-- Node 2: AUTH -->
                 <g id="node-2">
-                    <rect x="450" y="260" width="100" height="60" rx="8" class="graph-node idle" />
-                    <text x="500" y="285" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">AUTH</text>
-                    <text x="500" y="302" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">Check Token</text>
+                    <rect x="460" y="130" width="100" height="60" rx="8" class="graph-node idle" />
+                    <text x="510" y="155" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">AUTH</text>
+                    <text x="510" y="172" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">Token</text>
                 </g>
 
-                <!-- Node 3: BALANCE_QUERY -->
+                <!-- Node 3: BALANCE -->
                 <g id="node-3">
-                    <rect x="600" y="300" width="100" height="60" rx="8" class="graph-node idle" />
-                    <text x="650" y="320" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">BALANCE</text>
-                    <text x="650" y="337" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">DB Query</text>
-                    <text x="650" y="352" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="7" font-weight="600" font-family="'Inter', sans-serif">● AI Agent</text>
+                    <rect x="700" y="140" width="100" height="60" rx="8" class="graph-node idle" />
+                    <text x="750" y="160" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">BALANCE</text>
+                    <text x="750" y="177" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">DB Query</text>
+                    <text x="750" y="192" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="7" font-weight="600" font-family="'Inter', sans-serif">● AI Agent</text>
                 </g>
 
-                <!-- Node 4: TRANSFER_AGENT -->
+                <!-- Node 4: TRANSFER -->
                 <g id="node-4">
-                    <rect x="730" y="380" width="100" height="60" rx="8" class="graph-node idle" />
-                    <text x="780" y="400" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">TRANSFER</text>
-                    <text x="780" y="417" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">Core Logic</text>
-                    <text x="780" y="432" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="7" font-weight="600" font-family="'Inter', sans-serif">● AI Agent</text>
+                    <rect x="940" y="150" width="100" height="60" rx="8" class="graph-node idle" />
+                    <text x="990" y="170" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">TRANSFER</text>
+                    <text x="990" y="187" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">Core Logic</text>
+                    <text x="990" y="202" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="7" font-weight="600" font-family="'Inter', sans-serif">● AI Agent</text>
                 </g>
 
                 <!-- Node 5: COMPLIANCE -->
                 <g id="node-5">
-                    <rect x="920" y="440" width="100" height="60" rx="8" class="graph-node idle" />
-                    <text x="970" y="460" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">COMPLIANCE</text>
-                    <text x="970" y="477" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">Regulatory</text>
-                    <text x="970" y="492" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="7" font-weight="600" font-family="'Inter', sans-serif">● AI Agent</text>
+                    <rect x="1160" y="160" width="100" height="60" rx="8" class="graph-node idle" />
+                    <text x="1210" y="180" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">APPROVAL</text>
+                    <text x="1210" y="197" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">Decision</text>
+                    <text x="1210" y="212" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="7" font-weight="600" font-family="'Inter', sans-serif">● AI Agent</text>
                 </g>
 
-                <!-- Node 6: APPROVAL -->
+                <!-- MIDDLE BRANCH (Logging/Metrics) -->
+                <!-- Node 6: LOGGER -->
                 <g id="node-6">
-                    <rect x="1110" y="500" width="100" height="60" rx="8" class="graph-node idle" />
-                    <text x="1160" y="520" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">APPROVAL</text>
-                    <text x="1160" y="537" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">Decision Engine</text>
-                    <text x="1160" y="552" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="7" font-weight="600" font-family="'Inter', sans-serif">● AI Agent</text>
+                    <rect x="120" y="370" width="100" height="60" rx="8" class="graph-node idle" />
+                    <text x="170" y="395" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">LOGGER</text>
+                    <text x="170" y="412" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">Audit Trail</text>
                 </g>
 
-                <!-- Node 7: TRANSACTION_DB -->
+                <!-- Node 7: CACHE -->
                 <g id="node-7">
-                    <rect x="1240" y="560" width="100" height="60" rx="8" class="graph-node idle" />
-                    <text x="1290" y="585" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">DB_WRITE</text>
-                    <text x="1290" y="602" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">Transaction</text>
+                    <rect x="330" y="380" width="100" height="60" rx="8" class="graph-node idle" />
+                    <text x="380" y="405" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">CACHE</text>
+                    <text x="380" y="422" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">Store</text>
                 </g>
 
-                <!-- Node 8: END -->
-                <g id="node-8">
-                    <rect x="1310" y="640" width="100" height="60" rx="8" class="graph-node idle" />
-                    <text x="1360" y="665" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">END</text>
-                    <text x="1360" y="682" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">Response</text>
-                </g>
-
-                <!-- Node 9: LOGGER_1 (Parallel) -->
+                <!-- Node 9: VALIDATE -->
                 <g id="node-9">
-                    <rect x="215" y="420" width="100" height="60" rx="8" class="graph-node idle" />
-                    <text x="265" y="445" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">LOGGER</text>
-                    <text x="265" y="462" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">Audit Trail</text>
+                    <rect x="670" y="390" width="100" height="60" rx="8" class="graph-node idle" />
+                    <text x="720" y="415" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">VALIDATE</text>
+                    <text x="720" y="432" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">Check</text>
                 </g>
 
-                <!-- Node 10: METRICS (Parallel) -->
+                <!-- Node 10: METRICS -->
                 <g id="node-10">
-                    <rect x="215" y="630" width="100" height="60" rx="8" class="graph-node idle" />
-                    <text x="265" y="655" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">METRICS</text>
-                    <text x="265" y="672" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">Telemetry</text>
+                    <rect x="1030" y="400" width="100" height="60" rx="8" class="graph-node idle" />
+                    <text x="1080" y="425" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">METRICS</text>
+                    <text x="1080" y="442" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">Telemetry</text>
                 </g>
 
-                <!-- Node 11: RISK_ANALYSIS -->
+                <!-- BOTTOM BRANCH (Risk Analysis) -->
+                <!-- Node 11: RISK -->
                 <g id="node-11">
-                    <rect x="885" y="580" width="100" height="60" rx="8" class="graph-node idle" />
-                    <text x="935" y="600" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">RISK</text>
-                    <text x="935" y="617" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">Fraud Detection</text>
-                    <text x="935" y="632" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="7" font-weight="600" font-family="'Inter', sans-serif">● AI Agent</text>
+                    <rect x="300" y="570" width="100" height="60" rx="8" class="graph-node idle" />
+                    <text x="350" y="595" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">RISK</text>
+                    <text x="350" y="612" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">Analysis</text>
+                    <text x="350" y="627" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="7" font-weight="600" font-family="'Inter', sans-serif">● AI Agent</text>
+                </g>
+
+                <!-- Node 12: FRAUD -->
+                <g id="node-12">
+                    <rect x="650" y="580" width="100" height="60" rx="8" class="graph-node idle" />
+                    <text x="700" y="605" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">FRAUD</text>
+                    <text x="700" y="622" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">Detection</text>
+                    <text x="700" y="637" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="7" font-weight="600" font-family="'Inter', sans-serif">● AI Agent</text>
+                </g>
+
+                <!-- Node 13: AUDIT -->
+                <g id="node-13">
+                    <rect x="1050" y="590" width="100" height="60" rx="8" class="graph-node idle" />
+                    <text x="1100" y="615" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">AUDIT</text>
+                    <text x="1100" y="632" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">Compliance</text>
+                </g>
+
+                <!-- Node 8: END (Fixed position to not overflow) -->
+                <g id="node-8">
+                    <rect x="1280" y="220" width="90" height="60" rx="8" class="graph-node idle" />
+                    <text x="1325" y="245" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">END</text>
+                    <text x="1325" y="262" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">Response</text>
                 </g>
 
                 <!-- Data Packets (will be animated by JS) -->
@@ -255,7 +379,7 @@
             <!-- Контент (Поверх графики) -->
             <div class="relative z-20 max-w-6xl mx-auto px-6 py-20 text-center">
                 <!-- Semi-transparent card for better text visibility -->
-                <div class="bg-slate-900/70 backdrop-blur-md border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl">
+                <div class="bg-slate-900/30 backdrop-blur-md border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl">
                     <h1 class="text-4xl md:text-7xl font-bold text-white mb-6 leading-tight">
                         Curestry — Платформа для отладки AI-агентов
                     </h1>
@@ -278,6 +402,79 @@
                 </div>
             </div>
         </header>
+
+        <!-- ИНТЕГРАЦИИ: Бегущая строка -->
+        <section class="integration-marquee">
+            <div class="marquee-content">
+                <!-- First set of logos -->
+                <div class="marquee-item">
+                    <div class="marquee-logo">🦜</div>
+                    <span class="marquee-text">LangChain</span>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-logo">📊</div>
+                    <span class="marquee-text">LangGraph</span>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-logo">👥</div>
+                    <span class="marquee-text">CrewAI</span>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-logo">🔗</div>
+                    <span class="marquee-text">n8n</span>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-logo">🔴</div>
+                    <span class="marquee-text">Yandex AI Studio</span>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-logo">⚡</div>
+                    <span class="marquee-text">LLMStudio</span>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-logo">🔷</div>
+                    <span class="marquee-text">Google Agent Kit</span>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-logo">🎯</div>
+                    <span class="marquee-text">LangFlow</span>
+                </div>
+
+                <!-- Duplicate set for seamless loop -->
+                <div class="marquee-item">
+                    <div class="marquee-logo">🦜</div>
+                    <span class="marquee-text">LangChain</span>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-logo">📊</div>
+                    <span class="marquee-text">LangGraph</span>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-logo">👥</div>
+                    <span class="marquee-text">CrewAI</span>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-logo">🔗</div>
+                    <span class="marquee-text">n8n</span>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-logo">🔴</div>
+                    <span class="marquee-text">Yandex AI Studio</span>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-logo">⚡</div>
+                    <span class="marquee-text">LLMStudio</span>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-logo">🔷</div>
+                    <span class="marquee-text">Google Agent Kit</span>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-logo">🎯</div>
+                    <span class="marquee-text">LangFlow</span>
+                </div>
+            </div>
+        </section>
 
         <!-- СЕКЦИЯ 2: ПОЧЕМУ МЫ (3 колонки на десктопе) -->
         <section class="max-w-6xl mx-auto px-6 py-16">
@@ -544,27 +741,32 @@
                 this.isRunning = false;
 
                 // Define execution flows (sequences of node activations)
+                // Main branch (top) - primary execution path
                 this.mainFlow = [
                     { node: 0, edge: '0-1', duration: 300, processingTime: 400 },
                     { node: 1, edge: '1-2', duration: 400, processingTime: 500 },
                     { node: 2, edge: '2-3', duration: 350, processingTime: 300 },
                     { node: 3, edge: '3-4', duration: 400, processingTime: 450 },
                     { node: 4, edge: '4-5', duration: 450, processingTime: 500 },
-                    { node: 5, edge: '5-6', duration: 400, processingTime: 400 },
-                    { node: 6, edge: '6-7', duration: 350, processingTime: 350 },
-                    { node: 7, edge: '7-8', duration: 300, processingTime: 200 },
+                    { node: 5, edge: '5-8', duration: 400, processingTime: 400 },
                     { node: 8, edge: null, duration: 0, processingTime: 300 }
                 ];
 
+                // Middle branch (logging/metrics) - parallel flow
                 this.loggingFlow = [
-                    { node: 1, edge: '1-9', duration: 600, processingTime: 400, delay: 200 },
+                    { node: 0, edge: '0-6', duration: 600, processingTime: 400, delay: 200 },
+                    { node: 6, edge: '6-7', duration: 500, processingTime: 300, delay: 0 },
+                    { node: 7, edge: '7-9', duration: 450, processingTime: 300, delay: 0 },
                     { node: 9, edge: '9-10', duration: 500, processingTime: 300, delay: 0 },
-                    { node: 10, edge: null, duration: 0, processingTime: 200, delay: 0 }
+                    { node: 10, edge: '10-8', duration: 600, processingTime: 200, delay: 0 }
                 ];
 
+                // Bottom branch (risk/fraud/audit) - third parallel path
                 this.riskFlow = [
-                    { node: 4, edge: '4-11', duration: 500, processingTime: 600, delay: 300 },
-                    { node: 11, edge: '11-7', duration: 600, processingTime: 400, delay: 0 }
+                    { node: 1, edge: '1-11', duration: 700, processingTime: 600, delay: 300 },
+                    { node: 11, edge: '11-12', duration: 500, processingTime: 500, delay: 0 },
+                    { node: 12, edge: '12-13', duration: 500, processingTime: 400, delay: 0 },
+                    { node: 13, edge: '13-8', duration: 600, processingTime: 400, delay: 0 }
                 ];
             }
 
@@ -673,7 +875,7 @@
             }
 
             resetAllNodes() {
-                for (let i = 0; i < 12; i++) {
+                for (let i = 0; i <= 13; i++) {
                     this.setNodeState(i, 'idle');
                 }
             }
