@@ -13,7 +13,8 @@
     <meta property="og:description" content="Отладка AI-агентов за 10 минут вместо 4-8 часов. RCA + AutoFix + On-Premise.">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="canonical" href="https://curestry.com/">
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -119,8 +120,10 @@
         
         <!-- СЕКЦИЯ 1: HERO (Полноэкранная, с живым анимированным графом) -->
         <header class="relative overflow-hidden min-h-screen flex items-center justify-center pb-24">
+            <!-- Dark overlay for better text readability -->
+            <div class="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-slate-950/40 to-slate-950/80 z-10"></div>
             <!-- Фоновая SVG-графика: Banking Support Agent (LangGraph Style) -->
-            <svg id="agent-graph" class="absolute inset-0 z-0 w-full h-full opacity-30" viewBox="0 0 1400 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <svg id="agent-graph" class="absolute inset-0 z-0 w-full h-full opacity-40" viewBox="0 0 1400 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
                 <defs>
                     <filter id="glow">
                         <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
@@ -163,8 +166,9 @@
                 <!-- Node 1: ROUTER -->
                 <g id="node-1">
                     <rect x="240" y="200" width="100" height="60" rx="8" class="graph-node idle" />
-                    <text x="290" y="225" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">ROUTER</text>
-                    <text x="290" y="242" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">Intent Classifier</text>
+                    <text x="290" y="220" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">ROUTER</text>
+                    <text x="290" y="237" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">Intent Classifier</text>
+                    <text x="290" y="252" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="7" font-weight="600" font-family="'Inter', sans-serif">● AI Agent</text>
                 </g>
 
                 <!-- Node 2: AUTH_CHECK -->
@@ -177,29 +181,33 @@
                 <!-- Node 3: BALANCE_QUERY -->
                 <g id="node-3">
                     <rect x="600" y="300" width="100" height="60" rx="8" class="graph-node idle" />
-                    <text x="650" y="325" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">BALANCE</text>
-                    <text x="650" y="342" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">DB Query</text>
+                    <text x="650" y="320" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">BALANCE</text>
+                    <text x="650" y="337" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">DB Query</text>
+                    <text x="650" y="352" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="7" font-weight="600" font-family="'Inter', sans-serif">● AI Agent</text>
                 </g>
 
                 <!-- Node 4: TRANSFER_AGENT -->
                 <g id="node-4">
                     <rect x="730" y="380" width="100" height="60" rx="8" class="graph-node idle" />
-                    <text x="780" y="405" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">TRANSFER</text>
-                    <text x="780" y="422" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">Core Logic</text>
+                    <text x="780" y="400" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">TRANSFER</text>
+                    <text x="780" y="417" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">Core Logic</text>
+                    <text x="780" y="432" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="7" font-weight="600" font-family="'Inter', sans-serif">● AI Agent</text>
                 </g>
 
                 <!-- Node 5: COMPLIANCE -->
                 <g id="node-5">
                     <rect x="920" y="440" width="100" height="60" rx="8" class="graph-node idle" />
-                    <text x="970" y="465" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">COMPLIANCE</text>
-                    <text x="970" y="482" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">Regulatory</text>
+                    <text x="970" y="460" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">COMPLIANCE</text>
+                    <text x="970" y="477" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">Regulatory</text>
+                    <text x="970" y="492" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="7" font-weight="600" font-family="'Inter', sans-serif">● AI Agent</text>
                 </g>
 
                 <!-- Node 6: APPROVAL -->
                 <g id="node-6">
                     <rect x="1110" y="500" width="100" height="60" rx="8" class="graph-node idle" />
-                    <text x="1160" y="525" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">APPROVAL</text>
-                    <text x="1160" y="542" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">Decision Engine</text>
+                    <text x="1160" y="520" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">APPROVAL</text>
+                    <text x="1160" y="537" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">Decision Engine</text>
+                    <text x="1160" y="552" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="7" font-weight="600" font-family="'Inter', sans-serif">● AI Agent</text>
                 </g>
 
                 <!-- Node 7: TRANSACTION_DB -->
@@ -233,8 +241,9 @@
                 <!-- Node 11: RISK_ANALYSIS -->
                 <g id="node-11">
                     <rect x="885" y="580" width="100" height="60" rx="8" class="graph-node idle" />
-                    <text x="935" y="605" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">RISK</text>
-                    <text x="935" y="622" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">Fraud Detection</text>
+                    <text x="935" y="600" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="11" font-weight="700" font-family="'Inter', sans-serif">RISK</text>
+                    <text x="935" y="617" text-anchor="middle" fill="rgb(100, 116, 139)" font-size="9" font-family="'Inter', monospace">Fraud Detection</text>
+                    <text x="935" y="632" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="7" font-weight="600" font-family="'Inter', sans-serif">● AI Agent</text>
                 </g>
 
                 <!-- Data Packets (will be animated by JS) -->
@@ -245,24 +254,27 @@
 
             <!-- Контент (Поверх графики) -->
             <div class="relative z-20 max-w-6xl mx-auto px-6 py-20 text-center">
-                <h1 class="text-4xl md:text-7xl font-bold text-white mb-6 leading-tight text-shadow-lg">
-                    Curestry — Платформа для отладки AI-агентов
-                </h1>
-                <p class="text-base md:text-lg text-slate-300 mb-8 max-w-3xl mx-auto leading-relaxed text-shadow">
-                    Находи сбои за 10 минут. Исправляй автоматически.
-                </p>
+                <!-- Semi-transparent card for better text visibility -->
+                <div class="bg-slate-900/70 backdrop-blur-md border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl">
+                    <h1 class="text-4xl md:text-7xl font-bold text-white mb-6 leading-tight">
+                        Curestry — Платформа для отладки AI-агентов
+                    </h1>
+                    <p class="text-base md:text-lg text-slate-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+                        Находи сбои за 10 минут. Исправляй автоматически.
+                    </p>
 
-                <!-- Бейджи (Фичи) -->
-                <div class="flex flex-wrap justify-center gap-3">
-                    <span class="px-4 py-2 bg-cyan-500/20 border border-cyan-500/30 rounded-full text-sm md:text-base text-cyan-400 font-medium text-shadow">
-                        On-Premise
-                    </span>
-                    <span class="px-4 py-2 bg-blue-500/20 border border-blue-500/30 rounded-full text-sm md:text-base text-blue-400 font-medium text-shadow">
-                        Local Models
-                    </span>
-                    <span class="px-4 py-2 bg-emerald-500/20 border border-emerald-500/30 rounded-full text-sm md:text-base text-emerald-400 font-medium text-shadow">
-                        Auto-Fix
-                    </span>
+                    <!-- Бейджи (Фичи) -->
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <span class="px-4 py-2 bg-cyan-500/20 border border-cyan-500/30 rounded-full text-sm md:text-base text-cyan-400 font-medium">
+                            On-Premise
+                        </span>
+                        <span class="px-4 py-2 bg-blue-500/20 border border-blue-500/30 rounded-full text-sm md:text-base text-blue-400 font-medium">
+                            Local Models
+                        </span>
+                        <span class="px-4 py-2 bg-emerald-500/20 border border-emerald-500/30 rounded-full text-sm md:text-base text-emerald-400 font-medium">
+                            Auto-Fix
+                        </span>
+                    </div>
                 </div>
             </div>
         </header>
@@ -705,8 +717,9 @@
         function copyLink(relativePath, button) {
             event.stopPropagation();
             event.preventDefault();
-            
-            const fullUrl = window.location.origin + (window.location.pathname.endsWith('/') ? '' : '/') + relativePath;
+
+            // Build correct absolute URL from relative path
+            const fullUrl = new URL(relativePath, window.location.href).href;
             
             // Copy to clipboard
             navigator.clipboard.writeText(fullUrl).then(() => {
