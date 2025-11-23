@@ -644,10 +644,49 @@
 
         <!-- СЕКЦИЯ 4: СРАВНЕНИЕ С КОНКУРЕНТАМИ -->
         <section class="max-w-7xl mx-auto px-6 py-16">
-            <h2 class="text-3xl md:text-5xl font-bold text-white mb-4 text-center text-shadow">Сравнение с конкурентами</h2>
-            <p class="text-base md:text-lg text-slate-400 mb-12 text-center max-w-3xl mx-auto">
-                Мы не претендуем на лидерство во всех областях, но предлагаем сбалансированное решение для отладки AI-агентов с фокусом на on-premise и автоматизацию.
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-4 text-center text-shadow">Сравнение AgentOps платформ</h2>
+            <p class="text-base md:text-lg text-slate-400 mb-8 text-center max-w-4xl mx-auto">
+                Все платформы ниже — качественные решения для observability и мониторинга AI-систем. Мы выбрали свою нишу: автоматическая диагностика и исправление для multi-agent систем с on-premise развёртыванием.
             </p>
+
+            <!-- Platform Cards - Brief descriptions -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+                <!-- Curestry -->
+                <div class="bg-cyan-500/10 border-2 border-cyan-500/50 rounded-xl p-4">
+                    <h4 class="text-lg font-bold text-cyan-400 mb-2">Curestry</h4>
+                    <p class="text-sm text-slate-300 leading-relaxed">RCA + Auto-Fix для multi-agent систем. On-premise first с локальными моделями. Автоматическое исправление промптов и A/B-тестирование.</p>
+                </div>
+
+                <!-- LangSmith -->
+                <div class="bg-slate-900/50 border border-white/10 rounded-xl p-4">
+                    <h4 class="text-lg font-bold text-white mb-2">LangSmith</h4>
+                    <p class="text-sm text-slate-400 leading-relaxed">Лидер LLM observability от LangChain. Отличный tracing, playground, datasets, evaluation. Сильная экосистема и интеграции.</p>
+                </div>
+
+                <!-- Arize AI -->
+                <div class="bg-slate-900/50 border border-white/10 rounded-xl p-4">
+                    <h4 class="text-lg font-bold text-white mb-2">Arize AI</h4>
+                    <p class="text-sm text-slate-400 leading-relaxed">Enterprise ML observability. Мощная аналитика, drift detection, model performance monitoring. Фокус на production ML systems.</p>
+                </div>
+
+                <!-- Evidently AI -->
+                <div class="bg-slate-900/50 border border-white/10 rounded-xl p-4">
+                    <h4 class="text-lg font-bold text-white mb-2">Evidently AI</h4>
+                    <p class="text-sm text-slate-400 leading-relaxed">Open-source ML monitoring. Data drift, model quality, test suites. Сильное community, Python-native. Freemium + self-hosted.</p>
+                </div>
+
+                <!-- Laminar.sh -->
+                <div class="bg-slate-900/50 border border-white/10 rounded-xl p-4">
+                    <h4 class="text-lg font-bold text-white mb-2">Laminar.sh</h4>
+                    <p class="text-sm text-slate-400 leading-relaxed">YC S24, open-source tracing + browser recording. Молодая платформа с focus на developer experience и визуализацию.</p>
+                </div>
+
+                <!-- Langfuse -->
+                <div class="bg-slate-900/50 border border-white/10 rounded-xl p-4">
+                    <h4 class="text-lg font-bold text-white mb-2">Langfuse</h4>
+                    <p class="text-sm text-slate-400 leading-relaxed">Open-source LLM observability. Tracing, cost tracking, prompts management. Self-hosted option, активное community.</p>
+                </div>
+            </div>
 
             <!-- Desktop: Full Table -->
             <div class="hidden lg:block overflow-x-auto">
@@ -666,35 +705,35 @@
                     <tbody class="text-sm">
                         <!-- Row 1: Observability/Tracing -->
                         <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
-                            <td class="py-4 px-4 font-semibold text-slate-300">Observability & Tracing</td>
+                            <td class="py-4 px-4 font-semibold text-slate-300">LLM Observability & Tracing</td>
                             <td class="text-center py-4 px-3 bg-cyan-500/5">
                                 <div class="flex justify-center items-center gap-0.5" title="4/5">
                                     <span class="text-cyan-400">★★★★</span><span class="text-slate-600">☆</span>
                                 </div>
                             </td>
                             <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="5/5">
+                                <div class="flex justify-center items-center gap-0.5" title="5/5 - LangChain ecosystem leader">
                                     <span class="text-yellow-400">★★★★★</span>
                                 </div>
                             </td>
                             <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="4/5">
-                                    <span class="text-yellow-400">★★★★</span><span class="text-slate-600">☆</span>
+                                <div class="flex justify-center items-center gap-0.5" title="5/5 - Enterprise ML observability">
+                                    <span class="text-yellow-400">★★★★★</span>
                                 </div>
                             </td>
                             <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="3/5">
+                                <div class="flex justify-center items-center gap-0.5" title="3/5 - ML focus, not LLM-native">
                                     <span class="text-yellow-400">★★★</span><span class="text-slate-600">☆☆</span>
                                 </div>
                             </td>
                             <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="4/5">
+                                <div class="flex justify-center items-center gap-0.5" title="4/5 - Modern tracing + browser recording">
                                     <span class="text-yellow-400">★★★★</span><span class="text-slate-600">☆</span>
                                 </div>
                             </td>
                             <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="4/5">
-                                    <span class="text-yellow-400">★★★★</span><span class="text-slate-600">☆</span>
+                                <div class="flex justify-center items-center gap-0.5" title="5/5 - Excellent open-source tracing">
+                                    <span class="text-yellow-400">★★★★★</span>
                                 </div>
                             </td>
                         </tr>
@@ -703,33 +742,33 @@
                         <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
                             <td class="py-4 px-4 font-semibold text-slate-300">Root Cause Analysis (RCA)</td>
                             <td class="text-center py-4 px-3 bg-cyan-500/5">
-                                <div class="flex justify-center items-center gap-0.5" title="5/5">
+                                <div class="flex justify-center items-center gap-0.5" title="5/5 - Automated RCA with 20+ metrics">
                                     <span class="text-cyan-400">★★★★★</span>
                                 </div>
                             </td>
                             <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="2/5">
-                                    <span class="text-yellow-400">★★</span><span class="text-slate-600">☆☆☆</span>
-                                </div>
-                            </td>
-                            <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="3/5">
+                                <div class="flex justify-center items-center gap-0.5" title="3/5 - Manual debugging tools">
                                     <span class="text-yellow-400">★★★</span><span class="text-slate-600">☆☆</span>
                                 </div>
                             </td>
                             <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="2/5">
+                                <div class="flex justify-center items-center gap-0.5" title="4/5 - Strong drift analysis">
+                                    <span class="text-yellow-400">★★★★</span><span class="text-slate-600">☆</span>
+                                </div>
+                            </td>
+                            <td class="text-center py-4 px-3">
+                                <div class="flex justify-center items-center gap-0.5" title="3/5 - Test suites & reports">
+                                    <span class="text-yellow-400">★★★</span><span class="text-slate-600">☆☆</span>
+                                </div>
+                            </td>
+                            <td class="text-center py-4 px-3">
+                                <div class="flex justify-center items-center gap-0.5" title="2/5 - Young platform">
                                     <span class="text-yellow-400">★★</span><span class="text-slate-600">☆☆☆</span>
                                 </div>
                             </td>
                             <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="2/5">
-                                    <span class="text-yellow-400">★★</span><span class="text-slate-600">☆☆☆</span>
-                                </div>
-                            </td>
-                            <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="2/5">
-                                    <span class="text-yellow-400">★★</span><span class="text-slate-600">☆☆☆</span>
+                                <div class="flex justify-center items-center gap-0.5" title="3/5 - Basic debugging">
+                                    <span class="text-yellow-400">★★★</span><span class="text-slate-600">☆☆</span>
                                 </div>
                             </td>
                         </tr>
@@ -738,32 +777,32 @@
                         <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
                             <td class="py-4 px-4 font-semibold text-slate-300">Auto-Fix & Remediation</td>
                             <td class="text-center py-4 px-3 bg-cyan-500/5">
-                                <div class="flex justify-center items-center gap-0.5" title="5/5">
+                                <div class="flex justify-center items-center gap-0.5" title="5/5 - Automated prompt fixes + A/B tests">
                                     <span class="text-cyan-400">★★★★★</span>
                                 </div>
                             </td>
                             <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="1/5">
+                                <div class="flex justify-center items-center gap-0.5" title="2/5 - Manual through playground">
+                                    <span class="text-yellow-400">★★</span><span class="text-slate-600">☆☆☆</span>
+                                </div>
+                            </td>
+                            <td class="text-center py-4 px-3">
+                                <div class="flex justify-center items-center gap-0.5" title="2/5 - Alerts only">
+                                    <span class="text-yellow-400">★★</span><span class="text-slate-600">☆☆☆</span>
+                                </div>
+                            </td>
+                            <td class="text-center py-4 px-3">
+                                <div class="flex justify-center items-center gap-0.5" title="1/5 - No auto-fix">
                                     <span class="text-yellow-400">★</span><span class="text-slate-600">☆☆☆☆</span>
                                 </div>
                             </td>
                             <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="1/5">
+                                <div class="flex justify-center items-center gap-0.5" title="1/5 - No auto-fix">
                                     <span class="text-yellow-400">★</span><span class="text-slate-600">☆☆☆☆</span>
                                 </div>
                             </td>
                             <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="1/5">
-                                    <span class="text-yellow-400">★</span><span class="text-slate-600">☆☆☆☆</span>
-                                </div>
-                            </td>
-                            <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="1/5">
-                                    <span class="text-yellow-400">★</span><span class="text-slate-600">☆☆☆☆</span>
-                                </div>
-                            </td>
-                            <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="2/5">
+                                <div class="flex justify-center items-center gap-0.5" title="2/5 - Manual through UI">
                                     <span class="text-yellow-400">★★</span><span class="text-slate-600">☆☆☆</span>
                                 </div>
                             </td>
@@ -771,174 +810,174 @@
 
                         <!-- Row 4: On-Premise Deployment -->
                         <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
-                            <td class="py-4 px-4 font-semibold text-slate-300">On-Premise Deployment</td>
+                            <td class="py-4 px-4 font-semibold text-slate-300">On-Premise + Local Models</td>
                             <td class="text-center py-4 px-3 bg-cyan-500/5">
-                                <div class="flex justify-center items-center gap-0.5" title="5/5">
+                                <div class="flex justify-center items-center gap-0.5" title="5/5 - Built for on-prem + vLLM">
                                     <span class="text-cyan-400">★★★★★</span>
                                 </div>
                             </td>
                             <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="2/5">
-                                    <span class="text-yellow-400">★★</span><span class="text-slate-600">☆☆☆</span>
-                                </div>
-                            </td>
-                            <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="3/5">
+                                <div class="flex justify-center items-center gap-0.5" title="3/5 - Enterprise self-hosted available">
                                     <span class="text-yellow-400">★★★</span><span class="text-slate-600">☆☆</span>
                                 </div>
                             </td>
                             <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="4/5">
+                                <div class="flex justify-center items-center gap-0.5" title="4/5 - On-prem for enterprise">
                                     <span class="text-yellow-400">★★★★</span><span class="text-slate-600">☆</span>
                                 </div>
                             </td>
                             <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="4/5">
-                                    <span class="text-yellow-400">★★★★</span><span class="text-slate-600">☆</span>
+                                <div class="flex justify-center items-center gap-0.5" title="5/5 - Fully open-source, easy self-host">
+                                    <span class="text-yellow-400">★★★★★</span>
                                 </div>
                             </td>
                             <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="4/5">
-                                    <span class="text-yellow-400">★★★★</span><span class="text-slate-600">☆</span>
+                                <div class="flex justify-center items-center gap-0.5" title="5/5 - Open-source self-hosted">
+                                    <span class="text-yellow-400">★★★★★</span>
+                                </div>
+                            </td>
+                            <td class="text-center py-4 px-3">
+                                <div class="flex justify-center items-center gap-0.5" title="5/5 - Open-source self-hosted">
+                                    <span class="text-yellow-400">★★★★★</span>
                                 </div>
                             </td>
                         </tr>
 
                         <!-- Row 5: Multi-Agent Support -->
                         <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
-                            <td class="py-4 px-4 font-semibold text-slate-300">Multi-Agent Support</td>
+                            <td class="py-4 px-4 font-semibold text-slate-300">Multi-Agent Coordination</td>
                             <td class="text-center py-4 px-3 bg-cyan-500/5">
-                                <div class="flex justify-center items-center gap-0.5" title="5/5">
+                                <div class="flex justify-center items-center gap-0.5" title="5/5 - Multi-agent RCA specialist">
                                     <span class="text-cyan-400">★★★★★</span>
                                 </div>
                             </td>
                             <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="3/5">
+                                <div class="flex justify-center items-center gap-0.5" title="5/5 - Excellent LangGraph support">
+                                    <span class="text-yellow-400">★★★★★</span>
+                                </div>
+                            </td>
+                            <td class="text-center py-4 px-3">
+                                <div class="flex justify-center items-center gap-0.5" title="3/5 - General ML, not agent-specific">
                                     <span class="text-yellow-400">★★★</span><span class="text-slate-600">☆☆</span>
                                 </div>
                             </td>
                             <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="2/5">
+                                <div class="flex justify-center items-center gap-0.5" title="2/5 - Not agent-focused">
                                     <span class="text-yellow-400">★★</span><span class="text-slate-600">☆☆☆</span>
                                 </div>
                             </td>
                             <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="2/5">
-                                    <span class="text-yellow-400">★★</span><span class="text-slate-600">☆☆☆</span>
-                                </div>
-                            </td>
-                            <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="3/5">
+                                <div class="flex justify-center items-center gap-0.5" title="3/5 - Basic support">
                                     <span class="text-yellow-400">★★★</span><span class="text-slate-600">☆☆</span>
                                 </div>
                             </td>
                             <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="3/5">
-                                    <span class="text-yellow-400">★★★</span><span class="text-slate-600">☆☆</span>
+                                <div class="flex justify-center items-center gap-0.5" title="4/5 - Good chains/traces support">
+                                    <span class="text-yellow-400">★★★★</span><span class="text-slate-600">☆</span>
                                 </div>
                             </td>
                         </tr>
 
-                        <!-- Row 6: A/B Testing & Optimization -->
+                        <!-- Row 6: Cost Tracking & Optimization -->
                         <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
-                            <td class="py-4 px-4 font-semibold text-slate-300">A/B Testing & Optimization</td>
+                            <td class="py-4 px-4 font-semibold text-slate-300">Cost Tracking & Optimization</td>
                             <td class="text-center py-4 px-3 bg-cyan-500/5">
-                                <div class="flex justify-center items-center gap-0.5" title="4/5">
+                                <div class="flex justify-center items-center gap-0.5" title="5/5 - 15-20% cost reduction focus">
+                                    <span class="text-cyan-400">★★★★★</span>
+                                </div>
+                            </td>
+                            <td class="text-center py-4 px-3">
+                                <div class="flex justify-center items-center gap-0.5" title="5/5 - Excellent cost tracking">
+                                    <span class="text-yellow-400">★★★★★</span>
+                                </div>
+                            </td>
+                            <td class="text-center py-4 px-3">
+                                <div class="flex justify-center items-center gap-0.5" title="4/5 - Good cost monitoring">
+                                    <span class="text-yellow-400">★★★★</span><span class="text-slate-600">☆</span>
+                                </div>
+                            </td>
+                            <td class="text-center py-4 px-3">
+                                <div class="flex justify-center items-center gap-0.5" title="2/5 - Not main focus">
+                                    <span class="text-yellow-400">★★</span><span class="text-slate-600">☆☆☆</span>
+                                </div>
+                            </td>
+                            <td class="text-center py-4 px-3">
+                                <div class="flex justify-center items-center gap-0.5" title="3/5 - Basic tracking">
+                                    <span class="text-yellow-400">★★★</span><span class="text-slate-600">☆☆</span>
+                                </div>
+                            </td>
+                            <td class="text-center py-4 px-3">
+                                <div class="flex justify-center items-center gap-0.5" title="5/5 - Excellent cost analytics">
+                                    <span class="text-yellow-400">★★★★★</span>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Row 7: Evaluation & Testing -->
+                        <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                            <td class="py-4 px-4 font-semibold text-slate-300">Evaluation & A/B Testing</td>
+                            <td class="text-center py-4 px-3 bg-cyan-500/5">
+                                <div class="flex justify-center items-center gap-0.5" title="4/5 - A/B testing built-in">
                                     <span class="text-cyan-400">★★★★</span><span class="text-slate-600">☆</span>
                                 </div>
                             </td>
                             <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="4/5">
+                                <div class="flex justify-center items-center gap-0.5" title="5/5 - Industry-leading evaluation tools">
+                                    <span class="text-yellow-400">★★★★★</span>
+                                </div>
+                            </td>
+                            <td class="text-center py-4 px-3">
+                                <div class="flex justify-center items-center gap-0.5" title="4/5 - Experimentation platform">
                                     <span class="text-yellow-400">★★★★</span><span class="text-slate-600">☆</span>
                                 </div>
                             </td>
                             <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="3/5">
-                                    <span class="text-yellow-400">★★★</span><span class="text-slate-600">☆☆</span>
+                                <div class="flex justify-center items-center gap-0.5" title="4/5 - Strong test suites">
+                                    <span class="text-yellow-400">★★★★</span><span class="text-slate-600">☆</span>
                                 </div>
                             </td>
                             <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="2/5">
+                                <div class="flex justify-center items-center gap-0.5" title="2/5 - Basic">
                                     <span class="text-yellow-400">★★</span><span class="text-slate-600">☆☆☆</span>
                                 </div>
                             </td>
                             <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="2/5">
-                                    <span class="text-yellow-400">★★</span><span class="text-slate-600">☆☆☆</span>
-                                </div>
-                            </td>
-                            <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="3/5">
+                                <div class="flex justify-center items-center gap-0.5" title="3/5 - Scores & datasets">
                                     <span class="text-yellow-400">★★★</span><span class="text-slate-600">☆☆</span>
                                 </div>
                             </td>
                         </tr>
 
-                        <!-- Row 7: Pricing (Freemium) -->
-                        <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
-                            <td class="py-4 px-4 font-semibold text-slate-300">Freemium Pricing</td>
-                            <td class="text-center py-4 px-3 bg-cyan-500/5">
-                                <div class="flex justify-center items-center gap-0.5" title="5/5">
-                                    <span class="text-cyan-400">★★★★★</span>
-                                </div>
-                            </td>
-                            <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="2/5">
-                                    <span class="text-yellow-400">★★</span><span class="text-slate-600">☆☆☆</span>
-                                </div>
-                            </td>
-                            <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="1/5">
-                                    <span class="text-yellow-400">★</span><span class="text-slate-600">☆☆☆☆</span>
-                                </div>
-                            </td>
-                            <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="5/5">
-                                    <span class="text-yellow-400">★★★★★</span>
-                                </div>
-                            </td>
-                            <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="4/5">
-                                    <span class="text-yellow-400">★★★★</span><span class="text-slate-600">☆</span>
-                                </div>
-                            </td>
-                            <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="5/5">
-                                    <span class="text-yellow-400">★★★★★</span>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <!-- Row 8: Open Source -->
+                        <!-- Row 8: Developer Ecosystem -->
                         <tr class="hover:bg-white/5 transition-colors">
-                            <td class="py-4 px-4 font-semibold text-slate-300">Open Source</td>
+                            <td class="py-4 px-4 font-semibold text-slate-300">Developer Ecosystem & DX</td>
                             <td class="text-center py-4 px-3 bg-cyan-500/5">
-                                <div class="flex justify-center items-center gap-0.5" title="1/5">
-                                    <span class="text-cyan-400">★</span><span class="text-slate-600">☆☆☆☆</span>
+                                <div class="flex justify-center items-center gap-0.5" title="4/5 - Easy SDK, freemium">
+                                    <span class="text-cyan-400">★★★★</span><span class="text-slate-600">☆</span>
                                 </div>
                             </td>
                             <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="1/5">
-                                    <span class="text-yellow-400">★</span><span class="text-slate-600">☆☆☆☆</span>
-                                </div>
-                            </td>
-                            <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="1/5">
-                                    <span class="text-yellow-400">★</span><span class="text-slate-600">☆☆☆☆</span>
-                                </div>
-                            </td>
-                            <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="5/5">
+                                <div class="flex justify-center items-center gap-0.5" title="5/5 - Best ecosystem, LangChain native">
                                     <span class="text-yellow-400">★★★★★</span>
                                 </div>
                             </td>
                             <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="5/5">
-                                    <span class="text-yellow-400">★★★★★</span>
+                                <div class="flex justify-center items-center gap-0.5" title="4/5 - Enterprise-grade docs">
+                                    <span class="text-yellow-400">★★★★</span><span class="text-slate-600">☆</span>
                                 </div>
                             </td>
                             <td class="text-center py-4 px-3">
-                                <div class="flex justify-center items-center gap-0.5" title="5/5">
+                                <div class="flex justify-center items-center gap-0.5" title="4/5 - Python-native, strong community">
+                                    <span class="text-yellow-400">★★★★</span><span class="text-slate-600">☆</span>
+                                </div>
+                            </td>
+                            <td class="text-center py-4 px-3">
+                                <div class="flex justify-center items-center gap-0.5" title="4/5 - Modern DX, growing">
+                                    <span class="text-yellow-400">★★★★</span><span class="text-slate-600">☆</span>
+                                </div>
+                            </td>
+                            <td class="text-center py-4 px-3">
+                                <div class="flex justify-center items-center gap-0.5" title="5/5 - Great community, many integrations">
                                     <span class="text-yellow-400">★★★★★</span>
                                 </div>
                             </td>
@@ -974,97 +1013,92 @@
                             <span class="text-cyan-400">★★★★★</span>
                         </div>
                         <div class="flex justify-between items-center">
-                            <span class="text-sm text-slate-300 font-medium">A/B Testing</span>
+                            <span class="text-sm text-slate-300 font-medium">Cost & Eval</span>
+                            <span class="text-cyan-400">★★★★★/★★★★☆</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-slate-300 font-medium">Developer DX</span>
                             <span class="text-cyan-400">★★★★☆</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-slate-300 font-medium">Freemium</span>
-                            <span class="text-cyan-400">★★★★★</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-slate-300 font-medium">Open Source</span>
-                            <span class="text-slate-600">★☆☆☆☆</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Competitor Cards -->
                 <details class="bg-slate-900/50 border border-white/10 rounded-xl p-6">
-                    <summary class="text-lg font-bold text-white cursor-pointer">LangSmith</summary>
+                    <summary class="text-lg font-bold text-white cursor-pointer">LangSmith ⭐ (LangChain ecosystem)</summary>
                     <div class="space-y-2 mt-4">
                         <div class="flex justify-between"><span class="text-sm text-slate-400">Observability</span><span class="text-yellow-400">★★★★★</span></div>
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">RCA</span><span class="text-slate-600">★★☆☆☆</span></div>
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">Auto-Fix</span><span class="text-slate-600">★☆☆☆☆</span></div>
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">On-Premise</span><span class="text-slate-600">★★☆☆☆</span></div>
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">Multi-Agent</span><span class="text-yellow-400">★★★☆☆</span></div>
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">A/B Testing</span><span class="text-yellow-400">★★★★☆</span></div>
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">Freemium</span><span class="text-slate-600">★★☆☆☆</span></div>
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">Open Source</span><span class="text-slate-600">★☆☆☆☆</span></div>
-                    </div>
-                </details>
-
-                <details class="bg-slate-900/50 border border-white/10 rounded-xl p-6">
-                    <summary class="text-lg font-bold text-white cursor-pointer">Arize AI</summary>
-                    <div class="space-y-2 mt-4">
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">Observability</span><span class="text-yellow-400">★★★★☆</span></div>
                         <div class="flex justify-between"><span class="text-sm text-slate-400">RCA</span><span class="text-yellow-400">★★★☆☆</span></div>
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">Auto-Fix</span><span class="text-slate-600">★☆☆☆☆</span></div>
+                        <div class="flex justify-between"><span class="text-sm text-slate-400">Auto-Fix</span><span class="text-slate-600">★★☆☆☆</span></div>
                         <div class="flex justify-between"><span class="text-sm text-slate-400">On-Premise</span><span class="text-yellow-400">★★★☆☆</span></div>
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">Multi-Agent</span><span class="text-slate-600">★★☆☆☆</span></div>
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">A/B Testing</span><span class="text-yellow-400">★★★☆☆</span></div>
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">Freemium</span><span class="text-slate-600">★☆☆☆☆</span></div>
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">Open Source</span><span class="text-slate-600">★☆☆☆☆</span></div>
+                        <div class="flex justify-between"><span class="text-sm text-slate-400">Multi-Agent</span><span class="text-yellow-400">★★★★★</span></div>
+                        <div class="flex justify-between"><span class="text-sm text-slate-400">Cost & Eval</span><span class="text-yellow-400">★★★★★</span></div>
+                        <div class="flex justify-between"><span class="text-sm text-slate-400">Developer DX</span><span class="text-yellow-400">★★★★★</span></div>
                     </div>
                 </details>
 
                 <details class="bg-slate-900/50 border border-white/10 rounded-xl p-6">
-                    <summary class="text-lg font-bold text-white cursor-pointer">Evidently AI</summary>
+                    <summary class="text-lg font-bold text-white cursor-pointer">Arize AI (Enterprise ML)</summary>
                     <div class="space-y-2 mt-4">
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">Observability</span><span class="text-yellow-400">★★★☆☆</span></div>
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">RCA</span><span class="text-slate-600">★★☆☆☆</span></div>
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">Auto-Fix</span><span class="text-slate-600">★☆☆☆☆</span></div>
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">On-Premise</span><span class="text-yellow-400">★★★★☆</span></div>
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">Multi-Agent</span><span class="text-slate-600">★★☆☆☆</span></div>
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">A/B Testing</span><span class="text-slate-600">★★☆☆☆</span></div>
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">Freemium</span><span class="text-yellow-400">★★★★★</span></div>
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">Open Source</span><span class="text-yellow-400">★★★★★</span></div>
-                    </div>
-                </details>
-
-                <details class="bg-slate-900/50 border border-white/10 rounded-xl p-6">
-                    <summary class="text-lg font-bold text-white cursor-pointer">Laminar.sh</summary>
-                    <div class="space-y-2 mt-4">
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">Observability</span><span class="text-yellow-400">★★★★☆</span></div>
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">RCA</span><span class="text-slate-600">★★☆☆☆</span></div>
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">Auto-Fix</span><span class="text-slate-600">★☆☆☆☆</span></div>
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">On-Premise</span><span class="text-yellow-400">★★★★☆</span></div>
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">Multi-Agent</span><span class="text-yellow-400">★★★☆☆</span></div>
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">A/B Testing</span><span class="text-slate-600">★★☆☆☆</span></div>
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">Freemium</span><span class="text-yellow-400">★★★★☆</span></div>
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">Open Source</span><span class="text-yellow-400">★★★★★</span></div>
-                    </div>
-                </details>
-
-                <details class="bg-slate-900/50 border border-white/10 rounded-xl p-6">
-                    <summary class="text-lg font-bold text-white cursor-pointer">Langfuse</summary>
-                    <div class="space-y-2 mt-4">
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">Observability</span><span class="text-yellow-400">★★★★☆</span></div>
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">RCA</span><span class="text-slate-600">★★☆☆☆</span></div>
+                        <div class="flex justify-between"><span class="text-sm text-slate-400">Observability</span><span class="text-yellow-400">★★★★★</span></div>
+                        <div class="flex justify-between"><span class="text-sm text-slate-400">RCA</span><span class="text-yellow-400">★★★★☆</span></div>
                         <div class="flex justify-between"><span class="text-sm text-slate-400">Auto-Fix</span><span class="text-slate-600">★★☆☆☆</span></div>
                         <div class="flex justify-between"><span class="text-sm text-slate-400">On-Premise</span><span class="text-yellow-400">★★★★☆</span></div>
                         <div class="flex justify-between"><span class="text-sm text-slate-400">Multi-Agent</span><span class="text-yellow-400">★★★☆☆</span></div>
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">A/B Testing</span><span class="text-yellow-400">★★★☆☆</span></div>
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">Freemium</span><span class="text-yellow-400">★★★★★</span></div>
-                        <div class="flex justify-between"><span class="text-sm text-slate-400">Open Source</span><span class="text-yellow-400">★★★★★</span></div>
+                        <div class="flex justify-between"><span class="text-sm text-slate-400">Cost & Eval</span><span class="text-yellow-400">★★★★☆</span></div>
+                        <div class="flex justify-between"><span class="text-sm text-slate-400">Developer DX</span><span class="text-yellow-400">★★★★☆</span></div>
+                    </div>
+                </details>
+
+                <details class="bg-slate-900/50 border border-white/10 rounded-xl p-6">
+                    <summary class="text-lg font-bold text-white cursor-pointer">Evidently AI (Open Source)</summary>
+                    <div class="space-y-2 mt-4">
+                        <div class="flex justify-between"><span class="text-sm text-slate-400">Observability</span><span class="text-yellow-400">★★★☆☆</span></div>
+                        <div class="flex justify-between"><span class="text-sm text-slate-400">RCA</span><span class="text-yellow-400">★★★☆☆</span></div>
+                        <div class="flex justify-between"><span class="text-sm text-slate-400">Auto-Fix</span><span class="text-slate-600">★☆☆☆☆</span></div>
+                        <div class="flex justify-between"><span class="text-sm text-slate-400">On-Premise</span><span class="text-yellow-400">★★★★★</span></div>
+                        <div class="flex justify-between"><span class="text-sm text-slate-400">Multi-Agent</span><span class="text-slate-600">★★☆☆☆</span></div>
+                        <div class="flex justify-between"><span class="text-sm text-slate-400">Cost & Eval</span><span class="text-yellow-400">★★/★★★★☆</span></div>
+                        <div class="flex justify-between"><span class="text-sm text-slate-400">Developer DX</span><span class="text-yellow-400">★★★★☆</span></div>
+                    </div>
+                </details>
+
+                <details class="bg-slate-900/50 border border-white/10 rounded-xl p-6">
+                    <summary class="text-lg font-bold text-white cursor-pointer">Laminar.sh (YC S24)</summary>
+                    <div class="space-y-2 mt-4">
+                        <div class="flex justify-between"><span class="text-sm text-slate-400">Observability</span><span class="text-yellow-400">★★★★☆</span></div>
+                        <div class="flex justify-between"><span class="text-sm text-slate-400">RCA</span><span class="text-slate-600">★★☆☆☆</span></div>
+                        <div class="flex justify-between"><span class="text-sm text-slate-400">Auto-Fix</span><span class="text-slate-600">★☆☆☆☆</span></div>
+                        <div class="flex justify-between"><span class="text-sm text-slate-400">On-Premise</span><span class="text-yellow-400">★★★★★</span></div>
+                        <div class="flex justify-between"><span class="text-sm text-slate-400">Multi-Agent</span><span class="text-yellow-400">★★★☆☆</span></div>
+                        <div class="flex justify-between"><span class="text-sm text-slate-400">Cost & Eval</span><span class="text-yellow-400">★★★/★★☆</span></div>
+                        <div class="flex justify-between"><span class="text-sm text-slate-400">Developer DX</span><span class="text-yellow-400">★★★★☆</span></div>
+                    </div>
+                </details>
+
+                <details class="bg-slate-900/50 border border-white/10 rounded-xl p-6">
+                    <summary class="text-lg font-bold text-white cursor-pointer">Langfuse (Open Source)</summary>
+                    <div class="space-y-2 mt-4">
+                        <div class="flex justify-between"><span class="text-sm text-slate-400">Observability</span><span class="text-yellow-400">★★★★★</span></div>
+                        <div class="flex justify-between"><span class="text-sm text-slate-400">RCA</span><span class="text-yellow-400">★★★☆☆</span></div>
+                        <div class="flex justify-between"><span class="text-sm text-slate-400">Auto-Fix</span><span class="text-slate-600">★★☆☆☆</span></div>
+                        <div class="flex justify-between"><span class="text-sm text-slate-400">On-Premise</span><span class="text-yellow-400">★★★★★</span></div>
+                        <div class="flex justify-between"><span class="text-sm text-slate-400">Multi-Agent</span><span class="text-yellow-400">★★★★☆</span></div>
+                        <div class="flex justify-between"><span class="text-sm text-slate-400">Cost & Eval</span><span class="text-yellow-400">★★★★★/★★★☆</span></div>
+                        <div class="flex justify-between"><span class="text-sm text-slate-400">Developer DX</span><span class="text-yellow-400">★★★★★</span></div>
                     </div>
                 </details>
             </div>
 
             <!-- Summary note -->
             <div class="mt-8 p-6 bg-slate-900/30 border border-cyan-500/20 rounded-xl">
-                <p class="text-sm md:text-base text-slate-400 leading-relaxed">
-                    <span class="font-semibold text-cyan-400">Наша ниша:</span> Мы фокусируемся на автоматической диагностике (RCA) и исправлении (Auto-Fix) для multi-agent систем с поддержкой on-premise развёртывания. Если вам нужен максимальный контроль данных и автоматизация отладки — Curestry подойдёт лучше всего.
-                </p>
+                <h3 class="text-lg font-bold text-white mb-3">Кого выбрать?</h3>
+                <div class="space-y-3 text-sm md:text-base text-slate-400 leading-relaxed">
+                    <p><span class="font-semibold text-cyan-400">Curestry</span> — если нужен автоматический RCA + Auto-Fix для multi-agent систем с on-premise развёртыванием и локальными моделями.</p>
+                    <p><span class="font-semibold text-yellow-400">LangSmith</span> — если используете LangChain/LangGraph и нужны лучшие evaluation tools в экосистеме.</p>
+                    <p><span class="font-semibold text-yellow-400">Arize AI</span> — для enterprise ML observability с фокусом на drift detection и производительность моделей.</p>
+                    <p><span class="font-semibold text-yellow-400">Evidently/Langfuse/Laminar</span> — если нужен open-source с self-hosting и активным community.</p>
+                </div>
             </div>
         </section>
 
