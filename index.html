@@ -43,6 +43,7 @@
             font-family: 'Inter', sans-serif;
         }
         
+        /* Faster flow animation */
         @keyframes flow {
             0% {
                 stroke-dashoffset: 0;
@@ -52,126 +53,154 @@
             }
         }
         
+        /* Glowing pulse effect for active nodes */
         @keyframes node-pulse {
             0%, 100% {
-                opacity: 0.5;
+                opacity: 0.6;
+                filter: drop-shadow(0 0 4px rgba(34, 211, 238, 0.3));
             }
             50% {
                 opacity: 1;
+                filter: drop-shadow(0 0 12px rgba(34, 211, 238, 0.8)) drop-shadow(0 0 20px rgba(34, 211, 238, 0.4));
             }
         }
         
         .flow-line {
             stroke-dasharray: 4 4;
-            animation: flow 2s linear infinite;
+            animation: flow 0.8s linear infinite;
         }
         
         .flow-line-delay-1 {
-            animation-delay: 0.3s;
+            animation-delay: 0.15s;
         }
         
         .flow-line-delay-2 {
-            animation-delay: 0.6s;
+            animation-delay: 0.3s;
         }
         
         .flow-line-delay-3 {
-            animation-delay: 0.9s;
+            animation-delay: 0.45s;
         }
         
         .node-pulse {
-            animation: node-pulse 3s ease-in-out infinite;
+            animation: node-pulse 1.5s ease-in-out infinite;
         }
         
         .node-pulse-delay-1 {
-            animation-delay: 0.5s;
+            animation-delay: 0.3s;
         }
         
         .node-pulse-delay-2 {
-            animation-delay: 1s;
+            animation-delay: 0.6s;
         }
         
         .node-pulse-delay-3 {
-            animation-delay: 1.5s;
+            animation-delay: 0.9s;
         }
         
         .node-pulse-delay-4 {
-            animation-delay: 2s;
+            animation-delay: 1.2s;
+        }
+        
+        /* Text shadows for readability */
+        .text-shadow {
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 16px rgba(0, 0, 0, 0.5);
+        }
+        
+        .text-shadow-lg {
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.9), 0 0 24px rgba(0, 0, 0, 0.6);
         }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-400 antialiased">
+<body class="bg-gradient-to-b from-slate-950/80 via-slate-950/95 to-slate-950 text-slate-400 antialiased">
     <main class="min-h-screen">
         
         <!-- СЕКЦИЯ 1: HERO (Широкая, с анимированным графом) -->
         <section class="relative overflow-hidden min-h-[80vh] flex items-center justify-center">
-            <!-- Фоновая SVG-графика (LangGraph стиль) -->
-            <svg class="absolute inset-0 z-0 w-full h-full opacity-20 md:opacity-20" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+            <!-- Фоновая SVG-графика: Banking Support Agent (LangGraph) -->
+            <svg class="absolute inset-0 z-0 w-full h-full opacity-30 md:opacity-25" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
                 <defs>
                     <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-                        <polygon points="0 0, 8 4, 0 8" fill="rgb(34, 211, 238)" opacity="0.6" />
+                        <polygon points="0 0, 8 4, 0 8" fill="rgb(34, 211, 238)" opacity="0.7" />
                     </marker>
-                    <linearGradient id="nodeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:rgb(34, 211, 238);stop-opacity:0.8" />
-                        <stop offset="100%" style="stop-color:rgb(147, 51, 234);stop-opacity:0.8" />
-                    </linearGradient>
+                    <filter id="glow">
+                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                        <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
                 </defs>
                 
-                <!-- Связи (Кривые Безье) -->
-                <path d="M 200 200 Q 300 150, 400 180" stroke="rgb(34, 211, 238)" stroke-width="2" fill="none" opacity="0.4" marker-end="url(#arrowhead)" class="flow-line" />
-                <path d="M 400 180 Q 500 160, 600 200" stroke="rgb(34, 211, 238)" stroke-width="2" fill="none" opacity="0.4" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-1" />
-                <path d="M 600 200 Q 700 220, 800 280" stroke="rgb(34, 211, 238)" stroke-width="2" fill="none" opacity="0.4" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-2" />
-                <path d="M 200 200 Q 250 300, 300 400" stroke="rgb(147, 51, 234)" stroke-width="2" fill="none" opacity="0.4" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-1" />
-                <path d="M 300 400 Q 450 420, 600 450" stroke="rgb(147, 51, 234)" stroke-width="2" fill="none" opacity="0.4" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-2" />
-                <path d="M 400 180 Q 450 320, 500 450" stroke="rgb(34, 211, 238)" stroke-width="2" fill="none" opacity="0.4" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-3" />
-                <path d="M 600 200 Q 650 350, 700 500" stroke="rgb(147, 51, 234)" stroke-width="2" fill="none" opacity="0.4" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-2" />
-                <path d="M 800 280 Q 900 400, 1000 500" stroke="rgb(34, 211, 238)" stroke-width="2" fill="none" opacity="0.4" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-3" />
-                <path d="M 600 450 Q 750 480, 900 550" stroke="rgb(147, 51, 234)" stroke-width="2" fill="none" opacity="0.4" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-3" />
-                <path d="M 1000 500 Q 1050 600, 1100 700" stroke="rgb(34, 211, 238)" stroke-width="2" fill="none" opacity="0.4" marker-end="url(#arrowhead)" class="flow-line" />
+                <!-- Связи (Кривые Безье) - Banking Agent Flow -->
+                <!-- Start -> Router -->
+                <path d="M 200 200 Q 350 180, 500 200" stroke="rgb(100, 116, 139)" stroke-width="2" fill="none" opacity="0.5" marker-end="url(#arrowhead)" class="flow-line" />
                 
-                <!-- Узлы (Rounded Rectangles) -->
-                <rect x="150" y="150" width="100" height="60" rx="8" fill="url(#nodeGradient)" opacity="0.6" class="node-pulse" />
-                <text x="200" y="185" text-anchor="middle" fill="white" font-size="14" font-weight="600">Start</text>
+                <!-- Router -> Check_Balance -->
+                <path d="M 500 200 Q 600 220, 700 280" stroke="rgb(34, 211, 238)" stroke-width="2" fill="none" opacity="0.6" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-1" />
                 
-                <rect x="350" y="130" width="100" height="60" rx="8" fill="url(#nodeGradient)" opacity="0.6" class="node-pulse node-pulse-delay-1" />
-                <text x="400" y="165" text-anchor="middle" fill="white" font-size="14" font-weight="600">LLM Agent</text>
+                <!-- Router -> Transfer_Funds -->
+                <path d="M 500 200 Q 550 300, 600 400" stroke="rgb(34, 211, 238)" stroke-width="2" fill="none" opacity="0.6" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-1" />
                 
-                <rect x="550" y="150" width="100" height="60" rx="8" fill="url(#nodeGradient)" opacity="0.6" class="node-pulse node-pulse-delay-2" />
-                <text x="600" y="185" text-anchor="middle" fill="white" font-size="14" font-weight="600">Tool Call</text>
+                <!-- Check_Balance -> Fraud_Check -->
+                <path d="M 700 280 Q 750 350, 800 420" stroke="rgb(34, 211, 238)" stroke-width="2" fill="none" opacity="0.6" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-2" />
                 
-                <rect x="750" y="230" width="100" height="60" rx="8" fill="url(#nodeGradient)" opacity="0.6" class="node-pulse node-pulse-delay-3" />
-                <text x="800" y="265" text-anchor="middle" fill="white" font-size="14" font-weight="600">Decision</text>
+                <!-- Transfer_Funds -> Fraud_Check -->
+                <path d="M 600 400 Q 700 410, 800 420" stroke="rgb(34, 211, 238)" stroke-width="2" fill="none" opacity="0.6" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-2" />
                 
-                <rect x="250" y="350" width="100" height="60" rx="8" fill="url(#nodeGradient)" opacity="0.6" class="node-pulse node-pulse-delay-1" />
-                <text x="300" y="385" text-anchor="middle" fill="white" font-size="14" font-weight="600">Process</text>
+                <!-- Fraud_Check -> End -->
+                <path d="M 800 420 Q 950 500, 1100 600" stroke="rgb(34, 211, 238)" stroke-width="2" fill="none" opacity="0.6" marker-end="url(#arrowhead)" class="flow-line flow-line-delay-3" />
                 
-                <rect x="550" y="400" width="100" height="60" rx="8" fill="url(#nodeGradient)" opacity="0.6" class="node-pulse node-pulse-delay-2" />
-                <text x="600" y="435" text-anchor="middle" fill="white" font-size="14" font-weight="600">Validate</text>
+                <!-- Узлы (Rounded Rectangles) - Banking Agent Nodes -->
+                <!-- Start (User Query) -->
+                <rect x="150" y="150" width="100" height="60" rx="8" fill="rgba(34, 211, 238, 0.15)" stroke="rgb(34, 211, 238)" stroke-width="1.5" opacity="0.8" class="node-pulse" filter="url(#glow)" />
+                <text x="200" y="175" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="12" font-weight="600" font-family="monospace">Start</text>
+                <text x="200" y="190" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="10" font-family="monospace">User Query</text>
                 
-                <rect x="850" y="500" width="100" height="60" rx="8" fill="url(#nodeGradient)" opacity="0.6" class="node-pulse node-pulse-delay-3" />
-                <text x="900" y="535" text-anchor="middle" fill="white" font-size="14" font-weight="600">Result</text>
+                <!-- Router (Classifier) -->
+                <rect x="450" y="150" width="100" height="60" rx="8" fill="rgba(34, 211, 238, 0.15)" stroke="rgb(34, 211, 238)" stroke-width="1.5" opacity="0.8" class="node-pulse node-pulse-delay-1" filter="url(#glow)" />
+                <text x="500" y="175" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="12" font-weight="600" font-family="monospace">Router</text>
+                <text x="500" y="190" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="10" font-family="monospace">Classifier</text>
                 
-                <rect x="1050" y="650" width="100" height="60" rx="8" fill="url(#nodeGradient)" opacity="0.6" class="node-pulse node-pulse-delay-4" />
-                <text x="1100" y="685" text-anchor="middle" fill="white" font-size="14" font-weight="600">End</text>
+                <!-- Check_Balance (Tool) -->
+                <rect x="650" y="230" width="100" height="60" rx="8" fill="rgba(34, 211, 238, 0.15)" stroke="rgb(34, 211, 238)" stroke-width="1.5" opacity="0.8" class="node-pulse node-pulse-delay-2" filter="url(#glow)" />
+                <text x="700" y="255" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="12" font-weight="600" font-family="monospace">Check</text>
+                <text x="700" y="270" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="10" font-family="monospace">Balance</text>
+                
+                <!-- Transfer_Funds (Tool) -->
+                <rect x="550" y="350" width="100" height="60" rx="8" fill="rgba(34, 211, 238, 0.15)" stroke="rgb(34, 211, 238)" stroke-width="1.5" opacity="0.8" class="node-pulse node-pulse-delay-2" filter="url(#glow)" />
+                <text x="600" y="375" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="12" font-weight="600" font-family="monospace">Transfer</text>
+                <text x="600" y="390" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="10" font-family="monospace">Funds</text>
+                
+                <!-- Fraud_Check (Guardrail) -->
+                <rect x="750" y="370" width="100" height="60" rx="8" fill="rgba(34, 211, 238, 0.15)" stroke="rgb(34, 211, 238)" stroke-width="1.5" opacity="0.8" class="node-pulse node-pulse-delay-3" filter="url(#glow)" />
+                <text x="800" y="395" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="12" font-weight="600" font-family="monospace">Fraud</text>
+                <text x="800" y="410" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="10" font-family="monospace">Check</text>
+                
+                <!-- End (Response) -->
+                <rect x="1050" y="550" width="100" height="60" rx="8" fill="rgba(34, 211, 238, 0.15)" stroke="rgb(34, 211, 238)" stroke-width="1.5" opacity="0.8" class="node-pulse node-pulse-delay-4" filter="url(#glow)" />
+                <text x="1100" y="575" text-anchor="middle" fill="rgb(34, 211, 238)" font-size="12" font-weight="600" font-family="monospace">End</text>
+                <text x="1100" y="590" text-anchor="middle" fill="rgb(148, 163, 184)" font-size="10" font-family="monospace">Response</text>
             </svg>
             
             <!-- Контент (Поверх графики) -->
             <div class="relative z-10 max-w-6xl mx-auto px-6 py-20 text-center">
-                <h1 class="text-4xl md:text-7xl font-bold text-white mb-6 leading-tight">
+                <h1 class="text-4xl md:text-7xl font-bold text-white mb-6 leading-tight text-shadow-lg">
                     Curestry — Платформа для отладки AI-агентов
                 </h1>
-                <p class="text-base md:text-lg text-slate-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+                <p class="text-base md:text-lg text-slate-300 mb-8 max-w-3xl mx-auto leading-relaxed text-shadow">
                     Находи сбои за 10 минут. Исправляй автоматически.
                 </p>
                 
                 <!-- Бейджи (Фичи) -->
                 <div class="flex flex-wrap justify-center gap-3">
-                    <span class="px-4 py-2 bg-cyan-500/20 border border-cyan-500/30 rounded-full text-sm md:text-base text-cyan-400 font-medium">
+                    <span class="px-4 py-2 bg-cyan-500/20 border border-cyan-500/30 rounded-full text-sm md:text-base text-cyan-400 font-medium text-shadow">
                         On-Premise
                     </span>
-                    <span class="px-4 py-2 bg-blue-500/20 border border-blue-500/30 rounded-full text-sm md:text-base text-blue-400 font-medium">
+                    <span class="px-4 py-2 bg-blue-500/20 border border-blue-500/30 rounded-full text-sm md:text-base text-blue-400 font-medium text-shadow">
                         Local Models
                     </span>
-                    <span class="px-4 py-2 bg-emerald-500/20 border border-emerald-500/30 rounded-full text-sm md:text-base text-emerald-400 font-medium">
+                    <span class="px-4 py-2 bg-emerald-500/20 border border-emerald-500/30 rounded-full text-sm md:text-base text-emerald-400 font-medium text-shadow">
                         Auto-Fix
                     </span>
                 </div>
@@ -180,7 +209,7 @@
 
         <!-- СЕКЦИЯ 2: ПОЧЕМУ МЫ (3 колонки на десктопе) -->
         <section class="max-w-6xl mx-auto px-6 py-16">
-            <h2 class="text-3xl md:text-5xl font-bold text-white mb-12 text-center">Почему мы</h2>
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-12 text-center text-shadow">Почему мы</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 
                 <!-- Card 1: RCA + AutoFix -->
@@ -190,8 +219,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3">RCA + AutoFix</h3>
-                    <p class="text-sm md:text-base text-slate-400 leading-relaxed">
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3 text-shadow">RCA + AutoFix</h3>
+                    <p class="text-sm md:text-base text-slate-400 leading-relaxed text-shadow">
                         Автоматический поиск причин сбоев и их исправление без ручного вмешательства.
                     </p>
                 </div>
@@ -203,8 +232,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3">On-Premise</h3>
-                    <p class="text-sm md:text-base text-slate-400 leading-relaxed">
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3 text-shadow">On-Premise</h3>
+                    <p class="text-sm md:text-base text-slate-400 leading-relaxed text-shadow">
                         Полный контроль данных и безопасность. Zero external APIs. Работает локально.
                     </p>
                 </div>
@@ -216,8 +245,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Dev-First</h3>
-                    <p class="text-sm md:text-base text-slate-400 leading-relaxed">
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3 text-shadow">Dev-First</h3>
+                    <p class="text-sm md:text-base text-slate-400 leading-relaxed text-shadow">
                         Простая интеграция и SDK. Настройка за часы, а не недели.
                     </p>
                 </div>
@@ -227,15 +256,15 @@
 
         <!-- СЕКЦИЯ 3: МАТЕРИАЛЫ (3 колонки на десктопе) -->
         <section class="max-w-6xl mx-auto px-6 py-16">
-            <h2 class="text-3xl md:text-5xl font-bold text-white mb-12 text-center">Материалы</h2>
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-12 text-center text-shadow">Материалы</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 
                 <!-- Card 1: Product -->
                 <a href="presentations/product.html" target="_blank" class="relative group bg-slate-900/50 border border-white/10 p-6 rounded-2xl hover:border-cyan-500/30 transition-all block">
                     <div class="flex items-start justify-between gap-4">
                         <div class="flex-1">
-                            <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Продуктовая презентация</h3>
-                            <p class="text-sm md:text-base text-slate-400 leading-relaxed">
+                            <h3 class="text-xl md:text-2xl font-bold text-white mb-3 text-shadow">Продуктовая презентация</h3>
+                            <p class="text-sm md:text-base text-slate-400 leading-relaxed text-shadow">
                                 Полный обзор функционала, архитектуры, ROI
                             </p>
                         </div>
@@ -269,8 +298,8 @@
                 <a href="presentations/b2b-sales.html" target="_blank" class="relative group bg-slate-900/50 border border-white/10 p-6 rounded-2xl hover:border-cyan-500/30 transition-all block">
                     <div class="flex items-start justify-between gap-4">
                         <div class="flex-1">
-                            <h3 class="text-xl md:text-2xl font-bold text-white mb-3">B2B Sales презентация</h3>
-                            <p class="text-sm md:text-base text-slate-400 leading-relaxed">
+                            <h3 class="text-xl md:text-2xl font-bold text-white mb-3 text-shadow">B2B Sales презентация</h3>
+                            <p class="text-sm md:text-base text-slate-400 leading-relaxed text-shadow">
                                 Проблемы, решение, примеры внедрения, ROI
                             </p>
                         </div>
@@ -304,8 +333,8 @@
                 <a href="presentations/investor-pitch.html" target="_blank" class="relative group bg-slate-900/50 border border-white/10 p-6 rounded-2xl hover:border-cyan-500/30 transition-all block">
                     <div class="flex items-start justify-between gap-4">
                         <div class="flex-1">
-                            <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Investor Pitch презентация</h3>
-                            <p class="text-sm md:text-base text-slate-400 leading-relaxed">
+                            <h3 class="text-xl md:text-2xl font-bold text-white mb-3 text-shadow">Investor Pitch презентация</h3>
+                            <p class="text-sm md:text-base text-slate-400 leading-relaxed text-shadow">
                                 Рынок, команда, финансовые показатели, тракшн
                             </p>
                         </div>
@@ -338,20 +367,94 @@
             </div>
         </section>
 
-        <!-- СЕКЦИЯ 4: КОНТАКТЫ -->
+        <!-- СЕКЦИЯ 4: КОНТАКТЫ (Grid из 3-х интерактивных карточек) -->
         <footer class="max-w-6xl mx-auto px-6 py-16 border-t border-white/10">
-            <div class="flex flex-col md:flex-row gap-4 justify-center mb-6">
-                <a href="mailto:contact@curestry.com" class="px-8 py-3 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-lg text-center transition-all duration-300 text-base md:text-lg">
-                    Email
-                </a>
-                <a href="https://wa.me/+1234567890" class="px-8 py-3 border-2 border-cyan-500 hover:bg-cyan-500/10 text-cyan-400 font-semibold rounded-lg text-center transition-all duration-300 text-base md:text-lg">
-                    WhatsApp
-                </a>
-                <a href="https://t.me/curestry" class="px-8 py-3 border-2 border-cyan-500 hover:bg-cyan-500/10 text-cyan-400 font-semibold rounded-lg text-center transition-all duration-300 text-base md:text-lg">
-                    Telegram
-                </a>
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-12 text-center text-shadow">Контакты</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                
+                <!-- Card 1: Email -->
+                <div class="bg-slate-900/50 border border-white/10 rounded-xl p-4 flex flex-col gap-3 hover:border-cyan-500/50 transition-all">
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm font-semibold text-slate-400 uppercase tracking-wide">Email</span>
+                        <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex items-center justify-between gap-2">
+                        <span class="font-mono text-slate-300 text-lg flex-1">team@curestry.com</span>
+                        <button onclick="copyToClipboard('team@curestry.com', this)" class="p-1.5 rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-slate-400 hover:text-cyan-400 transition-colors" title="Копировать">
+                            <svg class="w-4 h-4 copy-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                            </svg>
+                            <svg class="w-4 h-4 check-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <a href="mailto:team@curestry.com" target="_blank" class="w-full px-4 py-2 bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/50 rounded-lg text-cyan-400 font-semibold text-center transition-all flex items-center justify-center gap-2">
+                        <span>Открыть</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Card 2: WhatsApp -->
+                <div class="bg-slate-900/50 border border-white/10 rounded-xl p-4 flex flex-col gap-3 hover:border-cyan-500/50 transition-all">
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm font-semibold text-slate-400 uppercase tracking-wide">WhatsApp</span>
+                        <svg class="w-5 h-5 text-slate-400" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                        </svg>
+                    </div>
+                    <div class="flex items-center justify-between gap-2">
+                        <span class="font-mono text-slate-300 text-lg flex-1">+7 702 777 62 98</span>
+                        <button onclick="copyToClipboard('+7 702 777 62 98', this)" class="p-1.5 rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-slate-400 hover:text-cyan-400 transition-colors" title="Копировать">
+                            <svg class="w-4 h-4 copy-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                            </svg>
+                            <svg class="w-4 h-4 check-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <a href="https://wa.me/77027776298" target="_blank" class="w-full px-4 py-2 bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/50 rounded-lg text-cyan-400 font-semibold text-center transition-all flex items-center justify-center gap-2">
+                        <span>Открыть</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Card 3: Telegram -->
+                <div class="bg-slate-900/50 border border-white/10 rounded-xl p-4 flex flex-col gap-3 hover:border-cyan-500/50 transition-all">
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm font-semibold text-slate-400 uppercase tracking-wide">Telegram</span>
+                        <svg class="w-5 h-5 text-slate-400" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.028-1.627 4.476-1.635z"/>
+                        </svg>
+                    </div>
+                    <div class="flex items-center justify-between gap-2">
+                        <span class="font-mono text-slate-300 text-lg flex-1">@lauranovat</span>
+                        <button onclick="copyToClipboard('@lauranovat', this)" class="p-1.5 rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-slate-400 hover:text-cyan-400 transition-colors" title="Копировать">
+                            <svg class="w-4 h-4 copy-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                            </svg>
+                            <svg class="w-4 h-4 check-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <a href="https://t.me/lauranovat" target="_blank" class="w-full px-4 py-2 bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/50 rounded-lg text-cyan-400 font-semibold text-center transition-all flex items-center justify-center gap-2">
+                        <span>Открыть</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
+                    </a>
+                </div>
+                
             </div>
-            <p class="text-xs md:text-sm text-slate-500 text-center">
+            <p class="text-xs md:text-sm text-slate-500 text-center text-shadow">
                 &copy; 2025 Curestry. All rights reserved.
             </p>
         </footer>
@@ -401,6 +504,52 @@
                         checkIcon.classList.remove('hidden');
                         setTimeout(() => {
                             linkIcon.classList.remove('hidden');
+                            checkIcon.classList.add('hidden');
+                        }, 2000);
+                    }
+                } catch (err) {
+                    console.error('Fallback copy failed:', err);
+                }
+                document.body.removeChild(textArea);
+            });
+        }
+        
+        // Copy contact info to clipboard function
+        function copyToClipboard(text, button) {
+            event.stopPropagation();
+            event.preventDefault();
+            
+            navigator.clipboard.writeText(text).then(() => {
+                const copyIcon = button.querySelector('.copy-icon');
+                const checkIcon = button.querySelector('.check-icon');
+                
+                if (copyIcon && checkIcon) {
+                    copyIcon.classList.add('hidden');
+                    checkIcon.classList.remove('hidden');
+                    
+                    setTimeout(() => {
+                        copyIcon.classList.remove('hidden');
+                        checkIcon.classList.add('hidden');
+                    }, 2000);
+                }
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+                // Fallback
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                textArea.style.position = 'fixed';
+                textArea.style.opacity = '0';
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    const copyIcon = button.querySelector('.copy-icon');
+                    const checkIcon = button.querySelector('.check-icon');
+                    if (copyIcon && checkIcon) {
+                        copyIcon.classList.add('hidden');
+                        checkIcon.classList.remove('hidden');
+                        setTimeout(() => {
+                            copyIcon.classList.remove('hidden');
                             checkIcon.classList.add('hidden');
                         }, 2000);
                     }
