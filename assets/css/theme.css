@@ -1,0 +1,130 @@
+/**
+ * Curestry Design System - Color Tokens
+ *
+ * Централизованная система управления цветами для всех страниц сайта.
+ * Все цвета определены в одном месте для простоты управления темой.
+ *
+ * Usage: var(--color-bg-primary)
+ */
+
+:root {
+    /* === Background Colors === */
+    --color-bg-primary: #0a0e1a;        /* Основной фон (dark blue-black) */
+    --color-bg-secondary: #0f172a;      /* Вторичный фон (slate-950) */
+    --color-bg-card: rgba(13, 22, 40, 0.7);  /* Фон карточек (полупрозрачный) */
+    --color-bg-card-solid: #0e121b;     /* Фон карточек (непрозрачный) */
+    --color-bg-overlay: rgba(0, 0, 0, 0.8);  /* Фон оверлеев */
+
+    /* === Accent Colors === */
+    --color-accent-cyan: #00d9ff;       /* Основной акцент (cyan/teal) */
+    --color-accent-cyan-light: #22d3ee; /* Светлый cyan */
+    --color-accent-cyan-dark: #06b6d4;  /* Темный cyan */
+    --color-accent-green: #00ff88;      /* Зеленый акцент (success) */
+    --color-accent-pink: #ff0080;       /* Розовый акцент */
+    --color-accent-red: #ff4d4d;        /* Красный акцент (danger) */
+    --color-accent-yellow: #ffc800;     /* Желтый акцент (warning) */
+    --color-accent-blue: #4361ee;       /* Синий акцент */
+
+    /* === Text Colors === */
+    --color-text-primary: #ffffff;      /* Основной текст (white) */
+    --color-text-secondary: #e2e8f0;    /* Вторичный текст (slate-200) */
+    --color-text-muted: #94a3b8;        /* Приглушенный текст (slate-400) */
+    --color-text-muted-dark: #64748b;   /* Темный приглушенный (slate-500) */
+    --color-text-disabled: #475569;     /* Отключенный текст (slate-600) */
+
+    /* === Border Colors === */
+    --color-border-primary: rgba(255, 255, 255, 0.1);      /* Основные границы */
+    --color-border-secondary: rgba(255, 255, 255, 0.08);   /* Вторичные границы */
+    --color-border-accent: rgba(0, 217, 255, 0.2);         /* Акцентные границы */
+    --color-border-hover: rgba(0, 217, 255, 0.4);          /* Границы при наведении */
+
+    /* === Shadow Colors === */
+    --color-shadow-sm: rgba(0, 0, 0, 0.2);                 /* Малая тень */
+    --color-shadow-md: rgba(0, 0, 0, 0.4);                 /* Средняя тень */
+    --color-shadow-lg: rgba(0, 0, 0, 0.6);                 /* Большая тень */
+    --color-shadow-neon: rgba(0, 217, 255, 0.15);          /* Неоновое свечение */
+    --color-shadow-neon-intense: rgba(0, 217, 255, 0.3);   /* Интенсивное свечение */
+
+    /* === Gradient Colors === */
+    --gradient-primary: linear-gradient(135deg, #00d9ff 0%, #06b6d4 100%);
+    --gradient-accent: linear-gradient(90deg, #00d9ff, #00ff88, #ff0080);
+    --gradient-radial: radial-gradient(circle at top right, rgba(0, 217, 255, 0.1) 0%, rgba(13, 22, 40, 0.95) 60%, #0a0e1a 100%);
+    --gradient-text: linear-gradient(135deg, #ffffff 0%, #b0c0ff 100%);
+
+    /* === Semantic Colors === */
+    --color-success: var(--color-accent-green);
+    --color-danger: var(--color-accent-red);
+    --color-warning: var(--color-accent-yellow);
+    --color-info: var(--color-accent-cyan);
+
+    /* === Interactive States === */
+    --color-link: var(--color-accent-cyan);
+    --color-link-hover: var(--color-accent-green);
+    --color-button-bg: var(--color-accent-cyan);
+    --color-button-bg-hover: var(--color-accent-cyan-light);
+    --color-button-text: #000000;
+
+    /* === Spacing & Layout === */
+    --spacing-xs: 0.25rem;    /* 4px */
+    --spacing-sm: 0.5rem;     /* 8px */
+    --spacing-md: 1rem;       /* 16px */
+    --spacing-lg: 1.5rem;     /* 24px */
+    --spacing-xl: 2rem;       /* 32px */
+    --spacing-2xl: 3rem;      /* 48px */
+
+    /* === Border Radius === */
+    --radius-sm: 0.375rem;    /* 6px */
+    --radius-md: 0.5rem;      /* 8px */
+    --radius-lg: 0.75rem;     /* 12px */
+    --radius-xl: 1.25rem;     /* 20px */
+    --radius-full: 9999px;    /* Full rounded */
+
+    /* === Transitions === */
+    --transition-fast: 150ms ease;
+    --transition-base: 200ms ease;
+    --transition-slow: 300ms ease;
+    --transition-all: all 300ms ease;
+
+    /* === Z-Index === */
+    --z-index-dropdown: 1000;
+    --z-index-sticky: 1020;
+    --z-index-fixed: 1030;
+    --z-index-modal: 1040;
+    --z-index-popover: 1050;
+    --z-index-tooltip: 1060;
+}
+
+/* === Dark Theme Overrides (if needed) === */
+[data-theme="dark"] {
+    /* Уже темная тема по умолчанию */
+}
+
+/* === Light Theme (future) === */
+[data-theme="light"] {
+    --color-bg-primary: #ffffff;
+    --color-bg-secondary: #f8fafc;
+    --color-bg-card: rgba(255, 255, 255, 0.9);
+    --color-text-primary: #0a0e1a;
+    --color-text-secondary: #334155;
+    --color-text-muted: #64748b;
+}
+
+/* === Utility Classes === */
+.bg-primary { background-color: var(--color-bg-primary); }
+.bg-secondary { background-color: var(--color-bg-secondary); }
+.bg-card { background-color: var(--color-bg-card); }
+
+.text-primary { color: var(--color-text-primary); }
+.text-secondary { color: var(--color-text-secondary); }
+.text-muted { color: var(--color-text-muted); }
+
+.text-accent-cyan { color: var(--color-accent-cyan); }
+.text-accent-green { color: var(--color-accent-green); }
+.text-accent-pink { color: var(--color-accent-pink); }
+
+.border-primary { border-color: var(--color-border-primary); }
+.border-accent { border-color: var(--color-border-accent); }
+
+.transition-fast { transition: var(--transition-fast); }
+.transition-base { transition: var(--transition-base); }
+.transition-slow { transition: var(--transition-slow); }

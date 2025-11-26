@@ -1,67 +1,21 @@
-<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <defs>
-    <linearGradient id="crestGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#22d3ee;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#06b6d4;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#0891b2;stop-opacity:1" />
-    </linearGradient>
-    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#1e293b;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:1" />
     </linearGradient>
   </defs>
 
-  <!-- Background -->
-  <rect width="100" height="100" rx="20" fill="url(#bgGradient)"/>
+  <!-- Background Circle -->
+  <circle cx="50" cy="50" r="45" fill="url(#grad1)"/>
 
-  <!-- Rooster Crest (гребешок петуха) - Main flowing shape -->
-  <path d="M 50 25
-           C 45 18, 40 15, 35 20
-           C 32 16, 30 14, 28 18
-           C 26 14, 24 12, 22 16
-           L 24 28
-           C 26 24, 28 22, 30 26
-           C 32 22, 34 20, 36 28
-           C 38 24, 40 20, 42 28
-           C 44 24, 46 22, 48 26
-           C 50 20, 52 18, 54 26
-           C 56 22, 58 20, 60 28
-           C 62 24, 64 22, 66 26
-           C 68 22, 70 20, 72 26
-           L 78 16
-           C 76 12, 74 14, 72 18
-           C 70 14, 68 16, 65 20
-           C 60 15, 55 18, 50 25 Z"
-        fill="url(#crestGradient)"
-        opacity="0.95"/>
-
-  <!-- Secondary wave for depth -->
-  <path d="M 30 32
-           C 35 28, 40 26, 45 32
-           C 48 28, 52 26, 55 32
-           C 58 28, 62 26, 65 32
-           C 68 28, 70 26, 73 32"
-        stroke="#22d3ee"
-        stroke-width="2.5"
+  <!-- C Letter Shape -->
+  <path d="M 50 20 A 25 25 0 1 1 50 80 A 25 25 0 0 1 50 20 M 50 30 A 15 15 0 1 0 50 70 A 15 15 0 0 0 50 30"
         fill="none"
-        opacity="0.6"
+        stroke="#ffffff"
+        stroke-width="8"
         stroke-linecap="round"/>
 
-  <!-- Body base -->
-  <ellipse cx="50" cy="55" rx="22" ry="28" fill="url(#crestGradient)" opacity="0.25"/>
-
-  <!-- Inner body highlight -->
-  <ellipse cx="50" cy="52" rx="16" ry="20" fill="url(#crestGradient)" opacity="0.4"/>
-
-  <!-- Accent dots on crest peaks -->
-  <circle cx="30" cy="26" r="2.5" fill="#22d3ee" opacity="0.9"/>
-  <circle cx="42" cy="28" r="3" fill="#06b6d4"/>
-  <circle cx="50" cy="25" r="3.5" fill="#22d3ee"/>
-  <circle cx="58" cy="28" r="3" fill="#06b6d4"/>
-  <circle cx="70" cy="26" r="2.5" fill="#22d3ee" opacity="0.9"/>
-
-  <!-- Sparkle highlights -->
-  <circle cx="38" cy="35" r="1.5" fill="#fff" opacity="0.8"/>
-  <circle cx="50" cy="38" r="2" fill="#fff" opacity="0.9"/>
-  <circle cx="62" cy="35" r="1.5" fill="#fff" opacity="0.8"/>
+  <!-- Pulse/Check accent -->
+  <circle cx="70" cy="30" r="8" fill="#00ff88"/>
 </svg>
