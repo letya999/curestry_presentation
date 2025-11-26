@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curestry - Pre-Seed Investor Deck</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="alternate icon" type="image/svg+xml" href="../favicon.svg">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
@@ -175,6 +177,111 @@
             font-size: 18px;
         }
         .comp-curestry .comp-label { color: var(--primary); font-weight: 700; font-size: 14px; }
+
+        /* Mobile Responsive Styles */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .slide {
+                width: 100%;
+                max-width: 100%;
+                min-height: auto;
+                height: auto;
+                padding: 30px 20px;
+                margin: 0 auto 20px auto;
+            }
+
+            h1 {
+                font-size: 36px;
+                margin-bottom: 15px;
+            }
+
+            h2 {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+
+            h2::before {
+                width: 4px;
+                height: 24px;
+            }
+
+            h3 {
+                font-size: 14px;
+            }
+
+            p {
+                font-size: 14px;
+                line-height: 1.5;
+            }
+
+            .grid-2, .grid-3, .grid-4 {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .metric-box {
+                padding: 12px;
+            }
+
+            .metric-val {
+                font-size: 24px;
+            }
+
+            .metric-lbl {
+                font-size: 11px;
+            }
+
+            .tag {
+                font-size: 10px;
+                padding: 3px 7px;
+            }
+
+            .slide-footer {
+                bottom: 15px;
+                left: 20px;
+                right: 20px;
+                padding-top: 10px;
+                font-size: 10px;
+                flex-direction: column;
+                gap: 5px;
+                text-align: center;
+            }
+
+            /* Competitor Map */
+            .comp-map {
+                height: 300px;
+            }
+
+            .comp-label {
+                font-size: 9px;
+            }
+
+            .comp-curestry .comp-circle {
+                width: 30px;
+                height: 30px;
+                font-size: 14px;
+            }
+
+            .comp-curestry .comp-label {
+                font-size: 12px;
+            }
+
+            /* Tables */
+            table {
+                font-size: 12px;
+            }
+
+            table th, table td {
+                padding: 8px 5px;
+            }
+        }
 
         @media print {
             body { background: #fff; padding: 0; }
