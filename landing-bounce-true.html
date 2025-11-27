@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест Bounce: True | Curestry</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=105547210', 'ym');
+
+        ym(105547210, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/105547210" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+</head>
+<body class="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-slate-300 min-h-screen">
+    <main class="container mx-auto px-6 py-16">
+        <!-- Header -->
+        <header class="text-center mb-16">
+            <div class="inline-block bg-red-500/10 text-red-400 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                ТЕСТ: BOUNCE = TRUE
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+                Страница без событий
+            </h1>
+            <p class="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto">
+                Любой переход на эту страницу считается <span class="text-red-400 font-semibold">отказом</span> в Яндекс.Метрике
+            </p>
+        </header>
+
+        <!-- Content -->
+        <div class="max-w-4xl mx-auto">
+            <!-- Info Card -->
+            <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-8 mb-8">
+                <h2 class="text-2xl font-bold text-white mb-4">Как это работает?</h2>
+                <div class="space-y-4 text-slate-300">
+                    <p>
+                        <span class="text-cyan-400 font-semibold">✓</span> На странице установлен счётчик Яндекс.Метрики (ID: 105547210)
+                    </p>
+                    <p>
+                        <span class="text-red-400 font-semibold">✗</span> НЕТ никаких событий <code class="bg-slate-900 px-2 py-1 rounded text-cyan-400">ym().reachGoal()</code>
+                    </p>
+                    <p>
+                        <span class="text-red-400 font-semibold">✗</span> НЕТ никаких целей
+                    </p>
+                    <p>
+                        <span class="text-red-400 font-semibold">✗</span> НЕТ кликов на внешние ссылки
+                    </p>
+                </div>
+            </div>
+
+            <!-- Test Scenario -->
+            <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-8 mb-8">
+                <h2 class="text-2xl font-bold text-white mb-4">Тестовый сценарий</h2>
+                <ol class="space-y-3 text-slate-300 list-decimal list-inside">
+                    <li>Откройте эту страницу</li>
+                    <li>Подождите 1-2 секунды</li>
+                    <li>Закройте вкладку или уйдите на другую страницу</li>
+                    <li>В Метрике это будет зафиксировано как <span class="text-red-400 font-semibold">отказ</span></li>
+                </ol>
+            </div>
+
+            <!-- Expected Result -->
+            <div class="bg-slate-800/50 border border-red-500/20 rounded-xl p-8">
+                <h2 class="text-2xl font-bold text-white mb-4">Ожидаемый результат</h2>
+                <div class="bg-red-500/10 border border-red-500/30 rounded-lg p-6">
+                    <p class="text-lg font-semibold text-red-400 mb-2">
+                        🔴 Bounce Rate: 100%
+                    </p>
+                    <p class="text-slate-300">
+                        Яндекс.Метрика зарегистрирует отказ, потому что пользователь не совершил никаких действий на странице (нет событий, нет кликов, нет просмотра других страниц).
+                    </p>
+                </div>
+            </div>
+
+            <!-- Footer Note -->
+            <div class="mt-12 text-center text-slate-500 text-sm">
+                <p>Страница создана для тестирования bounce-rate в Яндекс.Метрике</p>
+                <p class="mt-2">
+                    <a href="https://curestry.com" class="text-cyan-400 hover:text-cyan-300 transition-colors">
+                        ← Вернуться на curestry.com
+                    </a>
+                </p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
